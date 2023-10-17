@@ -114,6 +114,9 @@ type UseStatRes struct {
 	Rcnt   string    `json:"rcnt" bson:"rcnt"`
 	Rdate  string    `json:"rdate" bson:"rdate"`
 	Tstat  []UseStat `json:"tstat" bson:"tstat"`
+
+	Errcode string `json:"errcode" bson:"errcode"`
+	Errdtl  string `json:"errdtl" bson:"errdtl"`
 }
 
 type UseStat struct {
