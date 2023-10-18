@@ -338,15 +338,15 @@ func tradeList() {
 // 해당 요청은 '서버세 등록 된 시간 기준'으로 조회합니다.
 // 건수가 많을 경우 페이지 단위로 조회 가능합니다.
 // 최초 요청 시 페이지 및 전체 충전소 개수에 따라 재요청이 필요합니다.
-func tradeListAll() {
+func tradeListAll(p envType.PageNoRowCnt) {
 	var req envType.TradeListAllReq
 	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
 	req.Start = "2023100100000000"
 	req.End = "2023101800000000"
-	req.Pageno = "1"
-	req.Rowcnt = "1000"
+	req.Pageno = strconv.Itoa(p.PageNo)
+	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
 	res, err := EnvHttpRequest[envType.TradeListAllReq, envType.TradeListAllRes]("/trade/listall", req)
 	if err != nil {
@@ -449,7 +449,7 @@ func tradeStat() {
 // 해당 요청은 '자사 충전 이용 정보'를 조회합니다.
 // 페이지 조건을 통해 일정 건수로 조회합니다.
 // 조회 등록 실시 순으로 조회됩니다.
-func useList() {
+func useList(p envType.PageNoRowCnt) {
 	var req envType.UseListReq
 	req.Bid = bid
 	req.Bkey = bkey
@@ -458,8 +458,8 @@ func useList() {
 	req.Start = ""
 	req.End = ""
 	req.Bdate = ""
-	req.Pageno = "1"
-	req.Rowcnt = "1000"
+	req.Pageno = strconv.Itoa(p.PageNo)
+	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
 	res, err := EnvHttpRequest[envType.UseListReq, envType.UseListRes]("/use/list", req)
 	if err != nil {
