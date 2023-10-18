@@ -45,3 +45,11 @@ func (c ChargerInfoListAllRes) GetStationAreaInfo() []StationAreaInfo {
 	}
 	return saiArr
 }
+
+func (c ChargerInfoListRes) GetChargerInfo() []ChargerInfo {
+	return c.Cinfo
+}
+
+func (c ChargerInfoListAllRes) GetChargerInfo() []ChargerInfo {
+	return c.Cinfo
+}

@@ -31,7 +31,8 @@ func chargerInfoList() {
 	}
 
 	// 성공 처리
-	updateStationArea[envType.ChargerInfoListRes](res)
+	go updateStationArea[envType.ChargerInfoListRes](res)
+	go updateChargePoint[envType.ChargerInfoListRes](res)
 }
 
 // 2.2 충전소 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
@@ -59,12 +60,14 @@ func chargerInfoListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
+	go setStationArea[envType.ChargerInfoListAllRes](res)
+	go setChargePoint[envType.ChargerInfoListAllRes](res)
+
 	totalCnt, _ := strconv.Atoi(res.Totalcnt)
 	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
 		chargerInfoListAll(p)
 	}
-	setStationArea[envType.ChargerInfoListAllRes](res)
 }
 
 // 2.3 충전기 상태 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)

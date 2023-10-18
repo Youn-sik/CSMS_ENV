@@ -55,6 +55,7 @@ type EnvHttpResponseInterface interface {
 type StationAreaInfoInterface interface {
 	EnvHttpResponseInterface
 	GetStationAreaInfo() []StationAreaInfo
+	GetChargerInfo() []ChargerInfo
 }
 
 type StationAreaInfo struct {
