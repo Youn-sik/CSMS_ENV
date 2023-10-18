@@ -155,7 +155,7 @@ func updateChargePoint[TR envType.ChargerInfoInterface](cp TR) (bool, string) {
 	return true, ""
 }
 
-func UpdateChargePointStatus[TR envType.ChargePointStatusInterface](cpst TR) (bool, string) {
+func updateChargePointStatus[TR envType.ChargePointStatusInterface](cpst TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)

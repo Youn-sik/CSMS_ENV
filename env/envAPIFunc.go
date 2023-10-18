@@ -94,7 +94,7 @@ func chargerStatusList() {
 	}
 
 	// 성공 처리
-	go UpdateChargePointStatus[envType.ChargerStatusListRes](res)
+	go updateChargePointStatus[envType.ChargerStatusListRes](res)
 }
 
 // 2.4 충전기 상태 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
@@ -123,7 +123,7 @@ func chargerStatusListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	go UpdateChargePointStatus[envType.ChargerStatusListAllRes](res)
+	go updateChargePointStatus[envType.ChargerStatusListAllRes](res)
 
 	totalCnt, _ := strconv.Atoi(res.Totalcnt)
 	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
@@ -224,13 +224,13 @@ func cardList() {
 // 4.2 회원카드 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
 // 해당 요청은 '회원카드 정체 정보'를 조회합니다. '페이지 조건을 통해 일정 건수로 조회'합니다.
 // 최초 요청 시 페이지 및 전체 충전소 개수에 따라 재요청이 필요합니다.
-func cardListAll() {
+func cardListAll(p envType.PageNoRowCnt) {
 	var req envType.CardListAllReq
 	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
-	req.Pageno = "1"
-	req.Rowcnt = "1000"
+	req.Pageno = strconv.Itoa(p.PageNo)
+	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
 	res, err := EnvHttpRequest[envType.CardListAllReq, envType.CardListAllRes]("/card/listall", req)
 	if err != nil {
