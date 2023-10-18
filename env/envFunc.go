@@ -2,6 +2,7 @@ package envc
 
 import (
 	"log"
+	"strconv"
 
 	envType "CSMS_ENV/env/type"
 	"CSMS_ENV/logger"
@@ -36,13 +37,13 @@ func chargerInfoList() {
 // 2.2 충전소 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
 // 해당 요청은 '충전소 전체 정보'를 조회합니다. '페이지 조건을 통해 일정 건수로 조회'합니다.
 // 최초 요청 시 페이지 및 전체 충전소 개수에 따라 재요청이 필요합니다.
-func chargerInfoListAll() {
+func chargerInfoListAll(p envType.PageNoRowCnt) {
 	var req envType.ChargerInfoListAllReq
 	req.Rbid = bid
 	req.Bkey = bkey
 	req.Kind = "1"
-	req.Pageno = "1"
-	req.Rowcnt = "1000"
+	req.Pageno = strconv.Itoa(p.PageNo)
+	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
 	res, err := EnvHttpRequest[envType.ChargerInfoListAllReq, envType.ChargerInfoListAllRes]("/charger/info/listall", req)
 	if err != nil {
@@ -58,6 +59,11 @@ func chargerInfoListAll() {
 	}
 
 	// 성공 처리
+	totalCnt, _ := strconv.Atoi(res.Totalcnt)
+	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+		p.PageNo++
+		chargerInfoListAll(p)
+	}
 	setStationArea[envType.ChargerInfoListAllRes](res)
 }
 

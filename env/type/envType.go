@@ -72,3 +72,8 @@ type StationAreaInfo struct {
 	Gps             string `json:"gps"`
 	UseTime         string `json:"use_time"`
 }
+
+type PageNoRowCnt struct {
+	PageNo int
+	RowCnt int
+}
