@@ -48,17 +48,31 @@ type ChargerInfoMy struct {
 	Fee         string `json:"fee" bson:"fee"`
 	Cable       string `json:"cable" bson:"cable"`
 	Status      string `json:"status" bson:"status"`
+	Statdt      string `json:"statdt" bson:"statdt"`
 	Note        string `json:"note" bson:"note"`
 	Bmngid      string `json:"bmngid" bson:"bmngid"`
 	Limityn     string `json:"limityn" bson:"limityn"`
 	Limitdetail string `json:"limitdetail" bson:"limitdetail"`
 	Delyn       string `json:"delyn" bson:"delyn"`
 	Deldetail   string `json:"deldetail" bson:"deldetail"`
-	Last_tsdt   string `json:"last_tsdt" bson:"last_tsdt"`
-	Last_tedt   string `json:"last_tedt" bson:"last_tedt"`
-	Now_tsdt    string `json:"now_tsdt" bson:"now_tsdt"`
+	LastTsdt    string `json:"last_tsdt" bson:"last_tsdt"`
+	LastTedt    string `json:"last_tedt" bson:"last_tedt"`
+	NowTsdt     string `json:"now_tsdt" bson:"now_tsdt"`
 	Method      string `json:"method" bson:"method"`
 	Output      string `json:"output" bson:"output"`
+	Expireddt   string `json:"expireddt" bson:"expireddt"`
+	Year        string `json:"year" bson:"year"`
+	Stype       string `json:"stype" bson:"stype"`
+	Maker       string `json:"maker" bson:"maker"`
+	Subsid      string `json:"subsid" bson:"subsid"`
+	Owner       string `json:"owner" bson:"owner"`
+	Sign        string `json:"sign" bson:"sign"`
+	Setup       string `json:"setup" bson:"setup"`
+	Month       string `json:"month" bson:"month"`
+	Subsidy     string `json:"subsidy" bson:"subsidy"`
+	Motie       string `json:"motie" bson:"motie"`
+	Regdate     string `json:"regdate" bson:"regdate"`
+	Upddate     string `json:"upddate" bson:"upddate"`
 }
 
 type ChargerStatusUpdateReq struct {
@@ -68,13 +82,13 @@ type ChargerStatusUpdateReq struct {
 }
 
 type ChargerStatus struct {
-	Sid       string `json:"sid" bson:"sid"`
-	Cid       string `json:"cid" bson:"cid"`
-	Status    string `json:"status" bson:"status"`
-	Statdt    string `json:"statdt" bson:"statdt"`
-	Last_tsdt string `json:"last_tsdt" bson:"last_tsdt"`
-	Last_tedt string `json:"last_tedt" bson:"last_tedt"`
-	Now_tsdt  string `json:"now_tsdt" bson:"now_tsdt"`
+	Sid      string `json:"sid" bson:"sid"`
+	Cid      string `json:"cid" bson:"cid"`
+	Status   string `json:"status" bson:"status"`
+	Statdt   string `json:"statdt" bson:"statdt"`
+	LastTsdt string `json:"last_tsdt" bson:"last_tsdt"`
+	LastTedt string `json:"last_tedt" bson:"last_tedt"`
+	NowTsdt  string `json:"now_tsdt" bson:"now_tsdt"`
 }
 
 type ChargerStatusUpdateRes struct {
