@@ -157,6 +157,14 @@ func chargerInfoMyList(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
+	go setStationAreaMy[envType.ChargerInfoMyListAllRes](res)
+	go setChargePointMy[envType.ChargerInfoMyListAllRes](res)
+
+	totalCnt, _ := strconv.Atoi(res.Totalcnt)
+	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+		p.PageNo++
+		chargerInfoMyList(p)
+	}
 }
 
 // 3.2 충전기 상태 갱신 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
