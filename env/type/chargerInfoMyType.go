@@ -1,7 +1,7 @@
 package envType
 
 // 3. 충전기 관리
-type ChargerInfoMyListReq struct {
+type ChargerInfoMyListAllReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
@@ -11,7 +11,7 @@ type ChargerInfoMyListReq struct {
 	Cid    string `json:"cid" bson:"cid"`
 }
 
-type ChargerInfoMyListRes struct {
+type ChargerInfoMyListAllRes struct {
 	Result   string          `json:"result" bson:"result"`
 	Rdate    string          `json:"rdate" bson:"rdate"`
 	Totalcnt string          `json:"totalcnt" bson:"totalcnt"`

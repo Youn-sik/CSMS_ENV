@@ -6,7 +6,7 @@ type EnvHttpRequestInterface interface {
 		ChargerStatusListReq |
 		ChargerStatusListAllReq |
 
-		ChargerInfoMyListReq |
+		ChargerInfoMyListAllReq |
 		ChargerStatusUpdateReq |
 
 		CardListReq |
@@ -32,7 +32,7 @@ type EnvHttpResponseInterface interface {
 		ChargerStatusListRes |
 		ChargerStatusListAllRes |
 
-		ChargerInfoMyListRes |
+		ChargerInfoMyListAllRes |
 		ChargerStatusUpdateRes |
 
 		CardListRes |
@@ -52,7 +52,7 @@ type EnvHttpResponseInterface interface {
 		UseStatRes
 }
 
-type StationAreaChargePointInfoInterface interface {
+type ChargerInfoInterface interface {
 	EnvHttpResponseInterface
 	GetStationAreaInfo() []StationAreaInfo
 	GetChargerInfo() []ChargerInfo
@@ -61,6 +61,12 @@ type StationAreaChargePointInfoInterface interface {
 type ChargePointStatusInterface interface {
 	EnvHttpResponseInterface
 	GetChargerStatus() []ChargerInfo
+}
+
+type ChargerInfoMyInterface interface {
+	EnvHttpResponseInterface
+	GetStationAreaInfo() []StationAreaInfo
+	GetChargerInfoMy() []ChargerInfoMy
 }
 
 type StationAreaInfo struct {

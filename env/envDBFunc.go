@@ -17,7 +17,7 @@ import (
 	return true, ""
 */
 
-func setStationArea[TR envType.StationAreaChargePointInfoInterface](sa TR) (bool, string) {
+func setStationArea[TR envType.ChargerInfoInterface](sa TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -40,7 +40,7 @@ func setStationArea[TR envType.StationAreaChargePointInfoInterface](sa TR) (bool
 	return true, ""
 }
 
-func updateStationArea[TR envType.StationAreaChargePointInfoInterface](sa TR) (bool, string) {
+func updateStationArea[TR envType.ChargerInfoInterface](sa TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -80,7 +80,7 @@ func updateStationArea[TR envType.StationAreaChargePointInfoInterface](sa TR) (b
 	return true, ""
 }
 
-func setChargePoint[TR envType.StationAreaChargePointInfoInterface](cp TR) (bool, string) {
+func setChargePoint[TR envType.ChargerInfoInterface](cp TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -107,7 +107,7 @@ func setChargePoint[TR envType.StationAreaChargePointInfoInterface](cp TR) (bool
 	return true, ""
 }
 
-func updateChargePoint[TR envType.StationAreaChargePointInfoInterface](cp TR) (bool, string) {
+func updateChargePoint[TR envType.ChargerInfoInterface](cp TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)

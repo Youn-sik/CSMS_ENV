@@ -136,14 +136,14 @@ func chargerStatusListAll(p envType.PageNoRowCnt) {
 // 해당 요청은 '사업자가 관리하는 충전기 정보'를 조회합니다.
 // 응답 건수가 5,000 건 초과인 경우 조회가 불가능합니다.
 func chargerInfoMyList(p envType.PageNoRowCnt) {
-	var req envType.ChargerInfoMyListReq
+	var req envType.ChargerInfoMyListAllReq
 	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 전체 조회
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
-	res, err := EnvHttpRequest[envType.ChargerInfoMyListReq, envType.ChargerInfoMyListRes]("/charger/info/mylist", req)
+	res, err := EnvHttpRequest[envType.ChargerInfoMyListAllReq, envType.ChargerInfoMyListAllRes]("/charger/info/mylist", req)
 	if err != nil {
 		// 실패 에러 처리
 		logger.PrintErrorLogLevel4(err)
