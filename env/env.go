@@ -1,6 +1,7 @@
 package envc
 
 import (
+	envType "CSMS_ENV/env/type"
 	"CSMS_ENV/logger"
 	"bytes"
 	"crypto/tls"
@@ -39,7 +40,7 @@ func GetHttpClient() *http.Client {
 	return &http.Client{Transport: tr}
 }
 
-func EnvHttpRequest[TQ EnvHttpRequestInterface, TR EnvHttpResponseInterface](url string, req TQ) (TR, error) {
+func EnvHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpResponseInterface](url string, req TQ) (TR, error) {
 	var res TR
 
 	reqBody, _ := json.Marshal(req)
