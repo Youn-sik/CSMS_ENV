@@ -17,7 +17,7 @@ import (
 	return true, ""
 */
 
-func setStationArea[TR envType.StationAreaInfoInterface](sa TR) (bool, string) {
+func setStationArea[TR envType.StationAreaChargePointInfoInterface](sa TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -40,7 +40,7 @@ func setStationArea[TR envType.StationAreaInfoInterface](sa TR) (bool, string) {
 	return true, ""
 }
 
-func updateStationArea[TR envType.StationAreaInfoInterface](sa TR) (bool, string) {
+func updateStationArea[TR envType.StationAreaChargePointInfoInterface](sa TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -71,7 +71,7 @@ func updateStationArea[TR envType.StationAreaInfoInterface](sa TR) (bool, string
 				val.Bid, val.Sid)
 			if err != nil {
 				logger.PrintErrorLogLevel4(err)
-				return false, "Failed To Delete Data"
+				return false, "Failed To Update Data"
 			}
 		*/
 	}
@@ -80,7 +80,7 @@ func updateStationArea[TR envType.StationAreaInfoInterface](sa TR) (bool, string
 	return true, ""
 }
 
-func setChargePoint[TR envType.StationAreaInfoInterface](cp TR) (bool, string) {
+func setChargePoint[TR envType.StationAreaChargePointInfoInterface](cp TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -96,7 +96,7 @@ func setChargePoint[TR envType.StationAreaInfoInterface](cp TR) (bool, string) {
 			"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ",
 			val.Bid, val.Sid, val.Cid, val.Zcode, val.Name, val.Addr, val.Addrdtl, val.Daddr, val.Daddrdtl, val.Kind, val.Kinddtl, val.Gps, val.Usetime,
 			val.Free, val.Freedtl, val.Bname, val.Bcall, val.Type, val.Reserv, val.Member, val.Pay, val.Fee, val.Cable, val.Status, val.Statdt, val.Note,
-			val.Bmngid, val.Limityn, val.Limitdetail, val.Delyn, val.Deldetail, val.Last_tsdt, val.Last_tedt, val.Now_tsdt, val.Method, val.Output)
+			val.Bmngid, val.Limityn, val.Limitdetail, val.Delyn, val.Deldetail, val.LastTsdt, val.LastTedt, val.NowTsdt, val.Method, val.Output)
 		if err != nil {
 			logger.PrintErrorLogLevel4(err)
 			return false, "Failed To Insert Data"
@@ -107,7 +107,7 @@ func setChargePoint[TR envType.StationAreaInfoInterface](cp TR) (bool, string) {
 	return true, ""
 }
 
-func updateChargePoint[TR envType.StationAreaInfoInterface](cp TR) (bool, string) {
+func updateChargePoint[TR envType.StationAreaChargePointInfoInterface](cp TR) (bool, string) {
 	tx, err := tidbClientEnv.Begin()
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -128,7 +128,7 @@ func updateChargePoint[TR envType.StationAreaInfoInterface](cp TR) (bool, string
 			"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 			val.Bid, val.Sid, val.Cid, val.Zcode, val.Name, val.Addr, val.Addrdtl, val.Daddr, val.Daddrdtl, val.Kind, val.Kinddtl, val.Gps, val.Usetime,
 			val.Free, val.Freedtl, val.Bname, val.Bcall, val.Type, val.Reserv, val.Member, val.Pay, val.Fee, val.Cable, val.Status, val.Statdt, val.Note,
-			val.Bmngid, val.Limityn, val.Limitdetail, val.Delyn, val.Deldetail, val.Last_tsdt, val.Last_tedt, val.Now_tsdt, val.Method, val.Output)
+			val.Bmngid, val.Limityn, val.Limitdetail, val.Delyn, val.Deldetail, val.LastTsdt, val.LastTedt, val.NowTsdt, val.Method, val.Output)
 		if err != nil {
 			logger.PrintErrorLogLevel4(err)
 			return false, "Failed To Insert Data"
@@ -143,12 +143,35 @@ func updateChargePoint[TR envType.StationAreaInfoInterface](cp TR) (bool, string
 				val.Sid, val.Zcode, val.Name, val.Addr, val.Addrdtl,
 				val.Daddr, val.Daddrdtl, val.Kind, val.Kinddtl, val.Gps, val.Usetime,
 				val.Free, val.Freedtl, val.Bname, val.Bcall, val.Type, val.Reserv, val.Member, val.Pay, val.Fee, val.Cable, val.Status, val.Statdt, val.Note,
-				val.Bmngid, val.Limityn, val.Limitdetail, val.Delyn, val.Deldetail, val.Last_tsdt, val.Last_tedt, val.Now_tsdt, val.Method, val.Output, val.Bid, val.Cid)
+				val.Bmngid, val.Limityn, val.Limitdetail, val.Delyn, val.Deldetail, val.LastTsdt, val.LastTedt, val.NowTsdt, val.Method, val.Output, val.Bid, val.Cid)
 			if err != nil {
 				logger.PrintErrorLogLevel4(err)
-				return false, "Failed To Delete Data"
+				return false, "Failed To Update Data"
 			}
 		*/
+	}
+
+	tx.Commit()
+	return true, ""
+}
+
+func UpdateChargePointStatus[TR envType.ChargePointStatusInterface](cpst TR) (bool, string) {
+	tx, err := tidbClientEnv.Begin()
+	if err != nil {
+		logger.PrintErrorLogLevel4(err)
+		return false, "Tx Initializing Failed"
+	}
+	defer tx.Rollback()
+
+	chargePoint := cpst.GetChargerStatus()
+	for _, val := range chargePoint {
+		_, err = tx.Exec("update charge_point set status = ?, statdt = ?, last_tsdt = ?, last_tedt = ?, now_tsdt = ? "+
+			"where bid = ? and sid = ? and cid = ?",
+			val.Status, val.Statdt, val.LastTsdt, val.LastTedt, val.NowTsdt, val.Bid, val.Sid, val.Cid)
+		if err != nil {
+			logger.PrintErrorLogLevel4(err)
+			return false, "Failed To Update Data"
+		}
 	}
 
 	tx.Commit()

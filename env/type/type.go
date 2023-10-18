@@ -53,3 +53,11 @@ func (c ChargerInfoListRes) GetChargerInfo() []ChargerInfo {
 func (c ChargerInfoListAllRes) GetChargerInfo() []ChargerInfo {
 	return c.Cinfo
 }
+
+func (c ChargerStatusListRes) GetChargerStatus() []ChargerInfo {
+	return c.Cstat
+}
+
+func (c ChargerStatusListAllRes) GetChargerStatus() []ChargerInfo {
+	return c.Cstat
+}

@@ -94,19 +94,20 @@ func chargerStatusList() {
 	}
 
 	// 성공 처리
+	go UpdateChargePointStatus[envType.ChargerStatusListRes](res)
 }
 
 // 2.4 충전기 상태 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
 // 해당 요청은 '충전기 상태 전체 정보'를 조회합니다. '페이지 조건을 통해 일정 건수로 조회'합니다.
 // 1분 이내 충전기 상태가 조회됩니다.
 // 최초 요청 시 페이지 및 전체 충전기 개수에 따라 재요청이 필요합니다.
-func chargerStatusListAll() {
+func chargerStatusListAll(p envType.PageNoRowCnt) {
 	var req envType.ChargerStatusListAllReq
 	req.Rbid = bid
 	req.Bkey = bkey
 	req.Kind = "1"
-	req.Pageno = "1"
-	req.Rowcnt = "1000"
+	req.Pageno = strconv.Itoa(p.PageNo)
+	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
 	res, err := EnvHttpRequest[envType.ChargerStatusListAllReq, envType.ChargerStatusListAllRes]("/charger/status/listall", req)
 	if err != nil {
@@ -122,6 +123,13 @@ func chargerStatusListAll() {
 	}
 
 	// 성공 처리
+	go UpdateChargePointStatus[envType.ChargerStatusListAllRes](res)
+
+	totalCnt, _ := strconv.Atoi(res.Totalcnt)
+	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+		p.PageNo++
+		chargerStatusListAll(p)
+	}
 }
 
 // 3.1 충전기 관리 정보 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)

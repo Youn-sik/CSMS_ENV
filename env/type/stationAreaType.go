@@ -52,9 +52,9 @@ type ChargerInfo struct {
 	Limitdetail string `json:"limitdetail" bson:"limitdetail"`
 	Delyn       string `json:"delyn" bson:"delyn"`
 	Deldetail   string `json:"deldetail" bson:"deldetail"`
-	Last_tsdt   string `json:"last_tsdt" bson:"last_tsdt"`
-	Last_tedt   string `json:"last_tedt" bson:"last_tedt"`
-	Now_tsdt    string `json:"now_tsdt" bson:"now_tsdt"`
+	LastTsdt    string `json:"last_tsdt" bson:"last_tsdt"`
+	LastTedt    string `json:"last_tedt" bson:"last_tedt"`
+	NowTsdt     string `json:"now_tsdt" bson:"now_tsdt"`
 	Method      string `json:"method" bson:"method"`
 	Output      string `json:"output" bson:"output"`
 }

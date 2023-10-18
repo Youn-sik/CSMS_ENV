@@ -52,10 +52,15 @@ type EnvHttpResponseInterface interface {
 		UseStatRes
 }
 
-type StationAreaInfoInterface interface {
+type StationAreaChargePointInfoInterface interface {
 	EnvHttpResponseInterface
 	GetStationAreaInfo() []StationAreaInfo
 	GetChargerInfo() []ChargerInfo
+}
+
+type ChargePointStatusInterface interface {
+	EnvHttpResponseInterface
+	GetChargerStatus() []ChargerInfo
 }
 
 type StationAreaInfo struct {
