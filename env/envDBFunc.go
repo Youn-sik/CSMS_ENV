@@ -229,3 +229,61 @@ func setChargePointMy[TR envType.ChargerInfoMyInterface](cp TR) (bool, string) {
 	tx.Commit()
 	return true, ""
 }
+
+func setEnvCard[TR envType.CardInfoInterface](ci TR) (bool, string) {
+	tx, err := tidbClientEnv.Begin()
+	if err != nil {
+		logger.PrintErrorLogLevel4(err)
+		return false, "Tx Initializing Failed"
+	}
+	defer tx.Rollback()
+
+	card := ci.GetEnvCardInfo()
+	for _, val := range card {
+		_, err = tx.Exec("insert into env_card(bid, no, stop, regdate, upddate) values(?,?,?,?,?)",
+			val.Bid, val.No, val.Stop, val.Regdate, val.Upddate)
+		if err != nil {
+			logger.PrintErrorLogLevel4(err)
+			return false, "Failed To Insert Data"
+		}
+	}
+
+	tx.Commit()
+	return true, ""
+}
+
+func updateEnvCard[TR envType.CardInfoInterface](ci TR) (bool, string) {
+	tx, err := tidbClientEnv.Begin()
+	if err != nil {
+		logger.PrintErrorLogLevel4(err)
+		return false, "Tx Initializing Failed"
+	}
+	defer tx.Rollback()
+
+	card := ci.GetEnvCardInfo()
+	for _, val := range card {
+		_, err = tx.Exec("delete from env_card where bid = ? and no = ?", val.Bid, val.No)
+		if err != nil {
+			logger.PrintErrorLogLevel4(err)
+			return false, "Failed To Delete Data"
+		}
+		_, err = tx.Exec("insert into env_card(bid, no, stop, regdate, upddate) values(?,?,?,?,?)",
+			val.Bid, val.No, val.Stop, val.Regdate, val.Upddate)
+		if err != nil {
+			logger.PrintErrorLogLevel4(err)
+			return false, "Failed To Insert Data"
+		}
+		// 또는 아래 코드
+		/*
+			_, err = tx.Exec("update env_card set stop = ?, regdate = ?, upddate = ? where bid = ? and no = ?",
+				val.Stop, val.Regdate, val.Upddate, val.Bid, val.No)
+			if err != nil {
+				logger.PrintErrorLogLevel4(err)
+				return false, "Failed To Update Data"
+			}
+		*/
+	}
+
+	tx.Commit()
+	return true, ""
+}

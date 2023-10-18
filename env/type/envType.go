@@ -69,6 +69,11 @@ type ChargerInfoMyInterface interface {
 	GetChargerInfoMy() []ChargerInfoMy
 }
 
+type CardInfoInterface interface {
+	EnvHttpResponseInterface
+	GetEnvCardInfo() []Card
+}
+
 type StationAreaInfo struct {
 	StationAreaId   string `json:"station_area_id"`
 	Bid             string `json:"bid"`

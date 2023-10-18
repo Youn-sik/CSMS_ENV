@@ -219,6 +219,7 @@ func cardList() {
 	}
 
 	// 성공 처리
+	go updateEnvCard[envType.CardListRes](res)
 }
 
 // 4.2 회원카드 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
@@ -246,6 +247,13 @@ func cardListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
+	go setEnvCard[envType.CardListAllRes](res)
+
+	totalCnt, _ := strconv.Atoi(res.Totalcnt)
+	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+		p.PageNo++
+		cardListAll(p)
+	}
 }
 
 // 4.3 회원카드 갱신 (자세한 내용은 환경부 연동 문서 붙임 1 참고)

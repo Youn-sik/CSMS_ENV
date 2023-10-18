@@ -88,3 +88,11 @@ func (c ChargerInfoMyListAllRes) GetStationAreaInfo() []StationAreaInfo {
 func (c ChargerInfoMyListAllRes) GetChargerInfoMy() []ChargerInfoMy {
 	return c.Cinfo
 }
+
+func (c CardListRes) GetEnvCardInfo() []Card {
+	return c.Card
+}
+
+func (c CardListAllRes) GetEnvCardInfo() []Card {
+	return c.Card
+}
