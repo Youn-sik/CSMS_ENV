@@ -1,5 +1,6 @@
 package envType
 
+// 2. 충전소 관리
 type ChargerInfoListReq struct {
 	Bdate string `json:"bdate" bson:"bdate"`
 	Bkey  string `json:"bkey" bson:"bkey"`

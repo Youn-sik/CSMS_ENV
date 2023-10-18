@@ -1,5 +1,6 @@
 package envType
 
+// 4. 회원카드 관리
 type Card struct {
 	Bid     string `json:"bid" bson:"bid"`
 	No      string `json:"no" bson:"no"`

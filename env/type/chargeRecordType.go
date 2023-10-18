@@ -1,5 +1,6 @@
 package envType
 
+// 5. 충전이력 관리
 type TradeListReq struct {
 	Bid  string `json:"bid" bson:"bid"`
 	Bkey string `json:"bkey" bson:"bkey"`

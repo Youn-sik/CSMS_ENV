@@ -15,7 +15,7 @@ func chargerInfoList() {
 	var req envType.ChargerInfoListReq
 	req.Rbid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 
 	res, err := EnvHttpRequest[envType.ChargerInfoListReq, envType.ChargerInfoListRes]("/charger/info/list", req)
 	if err != nil {
@@ -42,7 +42,7 @@ func chargerInfoListAll(p envType.PageNoRowCnt) {
 	var req envType.ChargerInfoListAllReq
 	req.Rbid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
@@ -78,7 +78,7 @@ func chargerStatusList() {
 	var req envType.ChargerStatusListReq
 	req.Rbid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 
 	res, err := EnvHttpRequest[envType.ChargerStatusListReq, envType.ChargerStatusListRes]("/charger/status/list", req)
 	if err != nil {
@@ -105,7 +105,7 @@ func chargerStatusListAll(p envType.PageNoRowCnt) {
 	var req envType.ChargerStatusListAllReq
 	req.Rbid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
@@ -135,13 +135,13 @@ func chargerStatusListAll(p envType.PageNoRowCnt) {
 // 3.1 충전기 관리 정보 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
 // 해당 요청은 '사업자가 관리하는 충전기 정보'를 조회합니다.
 // 응답 건수가 5,000 건 초과인 경우 조회가 불가능합니다.
-func chargerInfoMyList() {
+func chargerInfoMyList(p envType.PageNoRowCnt) {
 	var req envType.ChargerInfoMyListReq
 	req.Bid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
-	req.Pageno = "1"
-	req.Rowcnt = "1000"
+	req.Kind = "1" // 자사 전체 조회
+	req.Pageno = strconv.Itoa(p.PageNo)
+	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
 	res, err := EnvHttpRequest[envType.ChargerInfoMyListReq, envType.ChargerInfoMyListRes]("/charger/info/mylist", req)
 	if err != nil {
@@ -195,7 +195,7 @@ func cardList() {
 	var req envType.CardListReq
 	req.Bid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 
 	res, err := EnvHttpRequest[envType.CardListReq, envType.CardListRes]("/card/list", req)
 	if err != nil {
@@ -220,7 +220,7 @@ func cardListAll() {
 	var req envType.CardListAllReq
 	req.Bid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 	req.Pageno = "1"
 	req.Rowcnt = "1000"
 
@@ -300,7 +300,7 @@ func tradeList() {
 	var req envType.TradeListReq
 	req.Bid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 
 	res, err := EnvHttpRequest[envType.TradeListReq, envType.TradeListRes]("/trade/list", req)
 	if err != nil {
@@ -326,7 +326,7 @@ func tradeListAll() {
 	var req envType.TradeListAllReq
 	req.Bid = bid
 	req.Bkey = bkey
-	req.Kind = "1"
+	req.Kind = "1" // 자사 제외
 	req.Start = "2023100100000000"
 	req.End = "2023101800000000"
 	req.Pageno = "1"

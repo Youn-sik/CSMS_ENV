@@ -1,5 +1,6 @@
 package envType
 
+// 3. 충전기 관리
 type ChargerInfoMyListReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`

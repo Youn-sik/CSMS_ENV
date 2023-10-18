@@ -1,5 +1,6 @@
 package envType
 
+// 6. 이용정보 관리
 type UseListReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
