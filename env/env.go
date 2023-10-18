@@ -1,21 +1,35 @@
 package envc
 
 import (
+	"CSMS_ENV/logger"
 	"bytes"
 	"crypto/tls"
+	"database/sql"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"os"
 )
 
+var tidbClientEnv *sql.DB
 var envHttpClient *http.Client
 var bid string
 var bkey string
 
 func init() {
+	tidbClientEnv = NewTidbConnectionEnv()
 	envHttpClient = GetHttpClient()
 	bid = "XX"
 	bkey = "XXXXXXXXXXXXXXXX"
+}
+
+func NewTidbConnectionEnv() *sql.DB {
+	db, err := sql.Open("mysql", os.Getenv("TIDB_USER")+":"+os.Getenv("TIDB_PASS")+"@tcp("+os.Getenv("TIDB_HOST")+":"+os.Getenv("TIDB_PORT")+")/"+os.Getenv("TIDB_DBNM"))
+	if err != nil {
+		logger.PrintErrorLogLevel4(err)
+		return nil
+	}
+	return db
 }
 
 func GetHttpClient() *http.Client {
