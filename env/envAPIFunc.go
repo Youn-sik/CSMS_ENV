@@ -31,7 +31,6 @@ func chargerInfoList() {
 	}
 
 	// 성공 처리
-	// updateStationArea[envType.ChargerInfoListRes](res)
 }
 
 // 2.2 충전소 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
