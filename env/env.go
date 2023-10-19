@@ -6,10 +6,13 @@ import (
 	"bytes"
 	"crypto/tls"
 	"database/sql"
+
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"os"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 var tidbClientEnv *sql.DB

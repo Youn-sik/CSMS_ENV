@@ -171,8 +171,7 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 // 해당 요청은 '사업자가 관리하는 충전기 상태를 갱신'합니다.
 // 운영기관(자사)의 충전기 상태가 변경되는 경우, 1분 이내에 갱신합니다.
 // 갱신 이후 30분이 지난 경우, '상태미확인' 상태로 서비스에 제공됩니다.
-func ChargerStatusUpdate() {
-	cstat := []envType.ChargerStatus{}
+func ChargerStatusUpdate(cstat []envType.ChargerStatus) {
 	var req envType.ChargerStatusUpdateReq
 	req.Bid = bid
 	req.Bkey = bkey
@@ -261,8 +260,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 // 정지 회원이 다른 사업자 충전기에서 인증이 될 수도 있습니다.
 // 회원카드 변경 정보를 10분 이내에 갱신하고, 갱신 누락을 대비하여 하루 한 번 전체 갱신을 권고합니다.
 // 한 번에 2000건 까지 갱신 가능합니다.
-func CardUpdate() {
-	cardNoStop := []envType.CardNoStop{}
+func CardUpdate(cardNoStop []envType.CardNoStop) {
 	var req envType.CardUpdateReq
 	req.Bid = bid
 	req.Bkey = bkey

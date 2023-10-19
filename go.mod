@@ -3,6 +3,7 @@ module CSMS_ENV
 go 1.20
 
 require (
+	github.com/go-sql-driver/mysql v1.7.1
 	github.com/robfig/cron v1.2.0
 	go.uber.org/zap v1.26.0
 	google.golang.org/grpc v1.59.0
