@@ -6,6 +6,8 @@ import (
 
 	envc "CSMS_ENV/env"
 	envType "CSMS_ENV/env/type"
+	rpc "CSMS_ENV/grpc"
+	pb "CSMS_ENV/grpc/adminService"
 
 	"github.com/robfig/cron"
 	"google.golang.org/grpc"
@@ -100,7 +102,7 @@ func main() {
 		log.Fatalf("Failed To Listen: %v", err)
 	}
 	s := grpc.NewServer()
-	// pb.RegisterProductInfoServer(s, &server{})
+	pb.RegisterAdminServiceServer(s, &rpc.GrpcServer{})
 	log.Printf("Starting gRPC Listener On Port " + port)
 
 	err = s.Serve(lis)
