@@ -366,8 +366,7 @@ func TradeListAll(p envType.PageNoRowCnt) {
 // 해당 요청은 '회원카드 인증을 통해 발생한 충전이력'을 등록합니다.
 // 한 번에 2000건 까지 등록 가능합니다.
 // 잘못 전송 된 데이터는 별도 관리자 화면에서 데이터를 수정하거나, 삭제 후 재전송 합니다.
-func TradeRegister() {
-	tradeRegisterInfo := []envType.TradeRegister{}
+func TradeRegister(tradeRegisterInfo []envType.TradeRegister) {
 	var req envType.TradeRegisterReq
 	req.Bid = bid
 	req.Bkey = bkey
@@ -478,8 +477,7 @@ func UseList(p envType.PageNoRowCnt) {
 // 6.2 이용정보 등록 (자세한 내용은 환경부 문서 붙임 1 참고)
 // 해당 요청은 '자사 충전 이용 정보'를 등록합니다.
 // 중복 등록 되지 않으며 (sid, cid, tsdt 가 일치하는 경우) 변경이 필요한 경우 삭제 후 재등록 합니다.
-func UseRegister() {
-	useRegisterInfo := []envType.UseRegister{}
+func UseRegister(useRegisterInfo []envType.UseRegister) {
 	var req envType.UseRegisterReq
 	req.Bid = bid
 	req.Bkey = bkey

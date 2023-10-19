@@ -1,0 +1,39 @@
+syntax = "proto3";
+package service;
+option go_package = "CSMS_ENV/grpc/service";
+
+service AdminService {
+    rpc StatusNotification(StatusNotificationInfo) returns (Result);
+    rpc StopTransaction(StopTransactionInfo) returns (Result);
+}
+
+message StatusNotificationInfo {
+    string sid = 1;
+    string cid = 2;
+    string status = 3;
+    string statdt = 4;
+    string lastTsdt = 5;
+    string lastTedt = 6;
+    string nowTsdt = 7;
+}
+
+message StopTransactionInfo {
+    string no = 1;
+    string sid = 2;
+    string cid = 3;
+    string tbid = 4;
+    string tsdt = 5;
+    string tedt = 6;
+    string btid = 7;
+    string pow = 8;
+    string mon = 9;
+    string bprice = 10;
+    string tbprice = 11;
+    string bmon = 12;
+    string rcvdate = 13;
+}
+
+message Result {
+    bool result = 1;
+    string errStr = 2;
+}
