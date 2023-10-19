@@ -1,6 +1,6 @@
 syntax = "proto3";
-package service;
-option go_package = "CSMS_ENV/grpc/service";
+package adminService;
+option go_package = "CSMS_ENV/grpc/adminService";
 
 service AdminService {
     rpc StatusNotification(StatusNotificationInfo) returns (Result);
