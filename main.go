@@ -36,7 +36,10 @@ func main() {
 	// 2.4 -> 최초 1회
 	go envc.ChargerStatusListAll(pageNoRowCnt)
 
-	// 3.1 -> 이벤트 기반 (충전기를 환경부에 등록 요청 한 후)
+	// 3.1 -> 24시간 마다
+	cr.AddFunc("@every 24h", func() {
+		go envc.ChargerInfoMyList(pageNoRowCnt)
+	})
 
 	// 3.2 -> 10분 마다 (가장 최근 상태를 수신) + 이벤트 기반 (chargePoint의 StatusNotification)
 	cr.AddFunc("@every 10m", func() {
@@ -54,7 +57,7 @@ func main() {
 		go envc.CardListAll(pageNoRowCnt)
 	})
 
-	// 4.3 -> 24시간 마다 + 이벤트 기반 (사용자를 환경부에 등록 요청 한 후)
+	// 4.3 -> 24시간 마다
 	cr.AddFunc("@every 24h", func() {
 		cardNoStop := []envType.CardNoStop{} // 모든 사용자의 카드 정보 값 : []envType.CardNoStop{} -> GetEnvCardStatus(from. gRPC)
 		go envc.CardUpdate(cardNoStop)
@@ -72,7 +75,7 @@ func main() {
 
 	// 5.5 -> (아직 미필요)
 
-	// 6.1 -> 이벤트 기반 (이력을 환경부에 등록 요청 한 후), (아직 미필요) -> 충전내역을 저장하는 경우
+	// 6.1 -> (아직 미필요) -> 충전내역을 저장하는 경우, 이벤트 기반 (이력을 환경부에 등록 요청 한 후),
 
 	// 6.2 -> 이벤트 기반 (충전이 종료 된 경우)
 
@@ -85,12 +88,11 @@ func main() {
 	/*
 		이벤트 정리: gRPC 을 통해 call 받은 후 처리
 
-		3.1 (충전기를 환경부에 등록 요청 한 후)
-		3.2 (chargePoint의 StatusNotification)
-		4.3 (사용자를 환경부에 등록 요청 한 후)
-		5.3 (충전이 종료 된 경우)
-		6.1 (이력을 환경부에 등록 요청 한 후)
-		6.2 (충전이 종료 된 경우)
+		3.2 (chargePoint의 StatusNotification) : o
+		5.3 (충전이 종료 된 경우) : o
+		6.2 (충전이 종료 된 경우) : o
+
+		// 6.1 (이력을 환경부에 등록 요청 한 후) :
 	*/
 
 	lis, err := net.Listen("tcp", port)
