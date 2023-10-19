@@ -18,13 +18,13 @@ var bid string
 var bkey string
 
 func init() {
-	tidbClientEnv = NewTidbConnectionEnv()
-	envHttpClient = GetHttpClient()
+	tidbClientEnv = newTidbConnectionEnv()
+	envHttpClient = getHttpClient()
 	bid = "XX"
 	bkey = "XXXXXXXXXXXXXXXX"
 }
 
-func NewTidbConnectionEnv() *sql.DB {
+func newTidbConnectionEnv() *sql.DB {
 	db, err := sql.Open("mysql", os.Getenv("TIDB_USER")+":"+os.Getenv("TIDB_PASS")+"@tcp("+os.Getenv("TIDB_HOST")+":"+os.Getenv("TIDB_PORT")+")/"+os.Getenv("TIDB_DBNM"))
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
@@ -33,14 +33,14 @@ func NewTidbConnectionEnv() *sql.DB {
 	return db
 }
 
-func GetHttpClient() *http.Client {
+func getHttpClient() *http.Client {
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
 	return &http.Client{Transport: tr}
 }
 
-func EnvHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpResponseInterface](url string, req TQ) (TR, error) {
+func envHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpResponseInterface](url string, req TQ) (TR, error) {
 	var res TR
 
 	reqBody, _ := json.Marshal(req)
