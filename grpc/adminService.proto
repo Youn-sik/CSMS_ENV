@@ -4,6 +4,7 @@ option go_package = "CSMS_ENV/grpc/adminService";
 
 service AdminService {
     rpc StatusNotification(StatusNotificationInfo) returns (Result);
+    rpc StatusNotificationStream(stream StatusNotificationInfo) returns (stream Result);
     rpc StopTransaction(StopTransactionInfo) returns (Result);
 }
 

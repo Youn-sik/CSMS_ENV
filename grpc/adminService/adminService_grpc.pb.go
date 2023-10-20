@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	AdminService_StatusNotification_FullMethodName = "/adminService.AdminService/StatusNotification"
-	AdminService_StopTransaction_FullMethodName    = "/adminService.AdminService/StopTransaction"
+	AdminService_StatusNotification_FullMethodName       = "/adminService.AdminService/StatusNotification"
+	AdminService_StatusNotificationStream_FullMethodName = "/adminService.AdminService/StatusNotificationStream"
+	AdminService_StopTransaction_FullMethodName          = "/adminService.AdminService/StopTransaction"
 )
 
 // AdminServiceClient is the client API for AdminService service.
@@ -28,6 +29,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type AdminServiceClient interface {
 	StatusNotification(ctx context.Context, in *StatusNotificationInfo, opts ...grpc.CallOption) (*Result, error)
+	StatusNotificationStream(ctx context.Context, opts ...grpc.CallOption) (AdminService_StatusNotificationStreamClient, error)
 	StopTransaction(ctx context.Context, in *StopTransactionInfo, opts ...grpc.CallOption) (*Result, error)
 }
 
@@ -48,6 +50,37 @@ func (c *adminServiceClient) StatusNotification(ctx context.Context, in *StatusN
 	return out, nil
 }
 
+func (c *adminServiceClient) StatusNotificationStream(ctx context.Context, opts ...grpc.CallOption) (AdminService_StatusNotificationStreamClient, error) {
+	stream, err := c.cc.NewStream(ctx, &AdminService_ServiceDesc.Streams[0], AdminService_StatusNotificationStream_FullMethodName, opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &adminServiceStatusNotificationStreamClient{stream}
+	return x, nil
+}
+
+type AdminService_StatusNotificationStreamClient interface {
+	Send(*StatusNotificationInfo) error
+	Recv() (*Result, error)
+	grpc.ClientStream
+}
+
+type adminServiceStatusNotificationStreamClient struct {
+	grpc.ClientStream
+}
+
+func (x *adminServiceStatusNotificationStreamClient) Send(m *StatusNotificationInfo) error {
+	return x.ClientStream.SendMsg(m)
+}
+
+func (x *adminServiceStatusNotificationStreamClient) Recv() (*Result, error) {
+	m := new(Result)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 func (c *adminServiceClient) StopTransaction(ctx context.Context, in *StopTransactionInfo, opts ...grpc.CallOption) (*Result, error) {
 	out := new(Result)
 	err := c.cc.Invoke(ctx, AdminService_StopTransaction_FullMethodName, in, out, opts...)
@@ -62,6 +95,7 @@ func (c *adminServiceClient) StopTransaction(ctx context.Context, in *StopTransa
 // for forward compatibility
 type AdminServiceServer interface {
 	StatusNotification(context.Context, *StatusNotificationInfo) (*Result, error)
+	StatusNotificationStream(AdminService_StatusNotificationStreamServer) error
 	StopTransaction(context.Context, *StopTransactionInfo) (*Result, error)
 	mustEmbedUnimplementedAdminServiceServer()
 }
@@ -72,6 +106,9 @@ type UnimplementedAdminServiceServer struct {
 
 func (UnimplementedAdminServiceServer) StatusNotification(context.Context, *StatusNotificationInfo) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StatusNotification not implemented")
+}
+func (UnimplementedAdminServiceServer) StatusNotificationStream(AdminService_StatusNotificationStreamServer) error {
+	return status.Errorf(codes.Unimplemented, "method StatusNotificationStream not implemented")
 }
 func (UnimplementedAdminServiceServer) StopTransaction(context.Context, *StopTransactionInfo) (*Result, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StopTransaction not implemented")
@@ -105,6 +142,32 @@ func _AdminService_StatusNotification_Handler(srv interface{}, ctx context.Conte
 		return srv.(AdminServiceServer).StatusNotification(ctx, req.(*StatusNotificationInfo))
 	}
 	return interceptor(ctx, in, info, handler)
+}
+
+func _AdminService_StatusNotificationStream_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(AdminServiceServer).StatusNotificationStream(&adminServiceStatusNotificationStreamServer{stream})
+}
+
+type AdminService_StatusNotificationStreamServer interface {
+	Send(*Result) error
+	Recv() (*StatusNotificationInfo, error)
+	grpc.ServerStream
+}
+
+type adminServiceStatusNotificationStreamServer struct {
+	grpc.ServerStream
+}
+
+func (x *adminServiceStatusNotificationStreamServer) Send(m *Result) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func (x *adminServiceStatusNotificationStreamServer) Recv() (*StatusNotificationInfo, error) {
+	m := new(StatusNotificationInfo)
+	if err := x.ServerStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
 }
 
 func _AdminService_StopTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -141,6 +204,13 @@ var AdminService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AdminService_StopTransaction_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "StatusNotificationStream",
+			Handler:       _AdminService_StatusNotificationStream_Handler,
+			ServerStreams: true,
+			ClientStreams: true,
+		},
+	},
 	Metadata: "adminService.proto",
 }

@@ -44,10 +44,7 @@ func main() {
 	})
 
 	// 3.2 -> 10분 마다 (가장 최근 상태를 수신) + 이벤트 기반 (chargePoint의 StatusNotification)
-	cr.AddFunc("@every 10m", func() {
-		cstat := []envType.ChargerStatus{} // 모든 충전기의 상태 값 : []envType.ChargerStatus{} -> GetChargePointStatus(from. gRPC)
-		go envc.ChargerStatusUpdate(cstat)
-	})
+	// gRPC 를 통해 구현
 
 	// 4.1 -> 10분 마다
 	cr.AddFunc("@every 10m", func() {
