@@ -23,7 +23,7 @@ type UseListRes struct {
 	Use      []Use  `json:"use" bson:"use"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdtl  string `json:"errdtl" bson:"errdtl"`
+	Errdlt  string `json:"errdlt" bson:"Errdlt"`
 }
 
 type Use struct {
@@ -62,7 +62,7 @@ type UseRegisterRes struct {
 	Limitcnt string           `json:"limitcnt" bson:"limitcnt"`
 	Errcnt   string           `json:"errcnt" bson:"errcnt"`
 	Errcode  string           `json:"errcode" bson:"errcode"`
-	Errdtl   string           `json:"errdtl" bson:"errdtl"`
+	Errdlt   string           `json:"errdlt" bson:"Errdlt"`
 	Errlist  []UseRegisterErr `json:"errlist" bson:"errlist"`
 }
 
@@ -91,7 +91,7 @@ type UseDeleteRes struct {
 	Delcnt  string         `json:"delcnt" bson:"delcnt"`
 	Errcnt  string         `json:"errcnt" bson:"errcnt"`
 	Errcode string         `json:"errcode" bson:"errcode"`
-	Errdtl  string         `json:"errdtl" bson:"errdtl"`
+	Errdlt  string         `json:"errdlt" bson:"Errdlt"`
 	Errlist []UseDeleteErr `json:"errlist" bson:"errlist"`
 }
 
@@ -117,7 +117,7 @@ type UseStatRes struct {
 	Tstat  []UseStat `json:"tstat" bson:"tstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdtl  string `json:"errdtl" bson:"errdtl"`
+	Errdlt  string `json:"errdlt" bson:"Errdlt"`
 }
 
 type UseStat struct {

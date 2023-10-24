@@ -14,7 +14,7 @@ type TradeListRes struct {
 	Trade  []Trade `json:"trade" bson:"trade"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdtl  string `json:"errdtl" bson:"errdtl"`
+	Errdlt  string `json:"errdlt" bson:"errdlt"`
 }
 
 type Trade struct {
@@ -55,7 +55,7 @@ type TradeListAllRes struct {
 	Trade    []Trade `json:"trade" bson:"trade"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdtl  string `json:"errdtl" bson:"errdtl"`
+	Errdlt  string `json:"errdlt" bson:"errdlt"`
 }
 
 type TradeRegisterReq struct {
@@ -86,7 +86,7 @@ type TradeRegisterRes struct {
 	Limitcnt string         `json:"limitcnt" bson:"limitcnt"`
 	Errcnt   string         `json:"errcnt" bson:"errcnt"`
 	Errcode  string         `json:"errcode" bson:"errcode"`
-	Errdtl   string         `json:"errdtl" bson:"errdtl"`
+	Errdlt   string         `json:"errdlt" bson:"errdlt"`
 	Errlist  []TradeListErr `json:"errlist" bson:"errlist"`
 }
 
@@ -115,7 +115,7 @@ type TradeExlistRes struct {
 	Trade  []TradeExlist `json:"trade" bson:"trade"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdtl  string `json:"errdtl" bson:"errdtl"`
+	Errdlt  string `json:"errdlt" bson:"errdlt"`
 }
 type TradeExlist struct {
 	Bid     string `json:"bid" bson:"bid"`
@@ -149,7 +149,7 @@ type TradeStatRes struct {
 	Tstat  []TradeStat `json:"tstat" bson:"tstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdtl  string `json:"errdtl" bson:"errdtl"`
+	Errdlt  string `json:"errdlt" bson:"errdlt"`
 }
 
 type TradeStat struct {
