@@ -13,7 +13,7 @@ import (
 )
 
 func (r *GrpcServer) StatusNotification(ctx context.Context, in *pb.StatusNotificationInfo) (*pb.Result, error) {
-	log.Printf("--- gRPC Input [StatusNotification] ---\n%v", in)
+	log.Printf("--- gRPC Input [StatusNotification] ---\n%+v", in)
 
 	cstat := envType.ChargerStatus{
 		Sid:      in.Sid,
@@ -39,10 +39,10 @@ func (r *GrpcServer) StatusNotificationStream(stream pb.AdminService_StatusNotif
 			return nil
 		}
 		if err != nil {
-			log.Printf("Client Stream Error: %v", err)
+			log.Printf("Client Stream Error: %+v", err)
 			return err
 		}
-		log.Printf("--- gRPC Input Stream Data [StatusNotificationStream] ---\n%v", in)
+		log.Printf("--- gRPC Input Stream Data [StatusNotificationStream] ---\n%+v", in)
 
 		cstat := envType.ChargerStatus{
 			Sid:      in.Sid,
@@ -58,14 +58,14 @@ func (r *GrpcServer) StatusNotificationStream(stream pb.AdminService_StatusNotif
 		result := pb.Result{Result: true, ErrStr: ""}
 		err = stream.Send(&result)
 		if err != nil {
-			log.Printf("Server Stream Send Error: %v", err)
+			log.Printf("Server Stream Send Error: %+v", err)
 			return err
 		}
 	}
 }
 
 func (r *GrpcServer) StopTransaction(ctx context.Context, in *pb.StopTransactionInfo) (*pb.Result, error) {
-	log.Printf("--- gRPC Input [StopTransaction] ---\n%v", in)
+	log.Printf("--- gRPC Input [StopTransaction] ---\n%+v", in)
 
 	cstr := envType.TradeRegister{
 		No:      in.No,

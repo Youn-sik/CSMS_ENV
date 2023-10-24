@@ -96,7 +96,7 @@ func main() {
 
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("Failed To Listen: %v", err)
+		log.Fatalf("Failed To Listen: %+v", err)
 	}
 	s := grpc.NewServer()
 	pb.RegisterAdminServiceServer(s, &rpc.GrpcServer{})
@@ -104,6 +104,6 @@ func main() {
 
 	err = s.Serve(lis)
 	if err != nil {
-		log.Fatalf("Failed To Serve: %v", err)
+		log.Fatalf("Failed To Serve: %+v", err)
 	}
 }
