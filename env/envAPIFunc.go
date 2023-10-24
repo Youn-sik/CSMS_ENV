@@ -13,9 +13,10 @@ import (
 // 요청이 없을 때, '최대 12시간 이내 변경 정보'만 조회합니다.
 func ChargerInfoList() {
 	var req envType.ChargerInfoListReq
-	req.Rbid = bid
+	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 
 	res, err := envHttpRequest[envType.ChargerInfoListReq, envType.ChargerInfoListRes]("/charger/info/list", req)
 	if err != nil {
@@ -41,9 +42,10 @@ func ChargerInfoList() {
 // 최초 요청 시 페이지 및 전체 충전소 개수에 따라 재요청이 필요합니다.
 func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	var req envType.ChargerInfoListAllReq
-	req.Rbid = bid
+	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
@@ -78,9 +80,10 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 // 이전 요청이 없을 때, '최대 10분 이내 변경 정보'만 조회합니다.
 func ChargerStatusList() {
 	var req envType.ChargerStatusListReq
-	req.Rbid = bid
+	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 
 	res, err := envHttpRequest[envType.ChargerStatusListReq, envType.ChargerStatusListRes]("/charger/status/list", req)
 	if err != nil {
@@ -106,9 +109,10 @@ func ChargerStatusList() {
 // 최초 요청 시 페이지 및 전체 충전기 개수에 따라 재요청이 필요합니다.
 func ChargerStatusListAll(p envType.PageNoRowCnt) {
 	var req envType.ChargerStatusListAllReq
-	req.Rbid = bid
+	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
@@ -209,6 +213,7 @@ func CardList() {
 	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 
 	res, err := envHttpRequest[envType.CardListReq, envType.CardListRes]("/card/list", req)
 	if err != nil {
@@ -236,6 +241,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = strconv.Itoa(p.RowCnt)
 
@@ -352,6 +358,7 @@ func TradeListAll(p envType.PageNoRowCnt) {
 	req.Bid = bid
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
+	req.Rbid = ""
 	req.Start = "2023100100000000"
 	req.End = "2023101800000000"
 	req.Pageno = strconv.Itoa(p.PageNo)
