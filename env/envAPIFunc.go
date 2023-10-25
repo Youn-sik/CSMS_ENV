@@ -99,7 +99,7 @@ func ChargerStatusList() {
 	}
 
 	// 성공 처리
-	go updateChargePointStatus[envType.ChargerStatusListRes](res)
+	updateChargePointStatus[envType.ChargerStatusListRes](res)
 }
 
 // 2.4 충전기 상태 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
