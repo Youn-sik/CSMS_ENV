@@ -33,8 +33,8 @@ func ChargerInfoList() {
 	}
 
 	// 성공 처리
-	go updateStationArea[envType.ChargerInfoListRes](res)
-	go updateChargePoint[envType.ChargerInfoListRes](res)
+	updateStationArea[envType.ChargerInfoListRes](res)
+	updateChargePoint[envType.ChargerInfoListRes](res)
 }
 
 // 2.2 충전소 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
@@ -64,8 +64,8 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	go setStationArea[envType.ChargerInfoListAllRes](res)
-	go setChargePoint[envType.ChargerInfoListAllRes](res)
+	setStationArea[envType.ChargerInfoListAllRes](res)
+	setChargePoint[envType.ChargerInfoListAllRes](res)
 
 	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
@@ -164,8 +164,8 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	go setStationAreaMy[envType.ChargerInfoMyListAllRes](res)
-	go setChargePointMy[envType.ChargerInfoMyListAllRes](res)
+	setStationAreaMy[envType.ChargerInfoMyListAllRes](res)
+	setChargePointMy[envType.ChargerInfoMyListAllRes](res)
 
 	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
@@ -227,7 +227,7 @@ func CardList() {
 	}
 
 	// 성공 처리
-	go updateEnvCard[envType.CardListRes](res)
+	updateEnvCard[envType.CardListRes](res)
 }
 
 // 4.2 회원카드 전체 조회 (자세한 내용은 환경부 연동 문서 붙임 1 참고)
@@ -257,7 +257,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	go setEnvCard[envType.CardListAllRes](res)
+	setEnvCard[envType.CardListAllRes](res)
 
 	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
