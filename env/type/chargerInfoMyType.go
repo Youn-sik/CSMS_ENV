@@ -94,10 +94,10 @@ type ChargerStatus struct {
 type ChargerStatusUpdateRes struct {
 	Result   string                   `json:"result" bson:"result"`
 	Rdate    string                   `json:"rdate" bson:"rdate"`
-	Reqcnt   string                   `json:"reqcnt" bson:"reqcnt"`
-	Updcnt   string                   `json:"updcnt" bson:"updcnt"`
-	Limitcnt string                   `json:"limitcnt" bson:"limitcnt"`
-	Errcnt   string                   `json:"errcnt" bson:"errcnt"`
+	Reqcnt   int                      `json:"reqcnt" bson:"reqcnt"`
+	Updcnt   int                      `json:"updcnt" bson:"updcnt"`
+	Limitcnt int                      `json:"limitcnt" bson:"limitcnt"`
+	Errcnt   int                      `json:"errcnt" bson:"errcnt"`
 	Errcode  string                   `json:"errcode" bson:"errcode"`
 	Errdtl   string                   `json:"errdtl" bson:"Errdtl"`
 	Errlist  []ChargerStatusUpdateErr `json:"errlist" bson:"errlist"`

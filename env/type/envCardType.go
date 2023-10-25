@@ -63,10 +63,10 @@ type CardNoStop struct {
 type CardUpdateRes struct {
 	Result   string          `json:"result" bson:"result"`
 	Rdate    string          `json:"rdate" bson:"rdate"`
-	Reqcnt   string          `json:"reqcnt" bson:"reqcnt"`
-	Updcnt   string          `json:"updcnt" bson:"updcnt"`
-	Dupcnt   string          `json:"dupcnt" bson:"dupcnt"`
-	Limitcnt string          `json:"limitcnt" bson:"limitcnt"`
+	Reqcnt   int             `json:"reqcnt" bson:"reqcnt"`
+	Updcnt   int             `json:"updcnt" bson:"updcnt"`
+	Dupcnt   int             `json:"dupcnt" bson:"dupcnt"`
+	Limitcnt int             `json:"limitcnt" bson:"limitcnt"`
 	Errcnt   string          `json:"errcnt" bson:"errcnt"`
 	Errcode  string          `json:"errcode" bson:"errcode"`
 	Errdtl   string          `json:"errdtl" bson:"Errdtl"`
