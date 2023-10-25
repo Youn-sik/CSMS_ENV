@@ -33,7 +33,7 @@ func ChargerInfoList() {
 	}
 
 	// 성공 처리
-	updateStationArea[envType.ChargerInfoListRes](res)
+	// updateStationArea[envType.ChargerInfoListRes](res)
 	updateChargePoint[envType.ChargerInfoListRes](res)
 }
 
@@ -64,7 +64,7 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	setStationArea[envType.ChargerInfoListAllRes](res)
+	// setStationArea[envType.ChargerInfoListAllRes](res)
 	setChargePoint[envType.ChargerInfoListAllRes](res)
 
 	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
@@ -164,7 +164,7 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	setStationAreaMy[envType.ChargerInfoMyListAllRes](res)
+	// setStationAreaMy[envType.ChargerInfoMyListAllRes](res)
 	setChargePointMy[envType.ChargerInfoMyListAllRes](res)
 
 	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
