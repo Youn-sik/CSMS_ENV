@@ -21,7 +21,7 @@ type CardListReq struct {
 type CardListRes struct {
 	Result string `json:"result" bson:"result"`
 	Rdate  string `json:"rdate" bson:"rdate"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt" bson:"rowcnt"`
 	Card   []Card `json:"card" bson:"card"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
@@ -34,7 +34,7 @@ type CardListAllReq struct {
 	Kind   string `json:"kind" bson:"kind"`
 	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
 	Pageno string `json:"pageno,omitempty" bson:"pageno"`
-	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type CardListAllRes struct {

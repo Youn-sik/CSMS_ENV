@@ -10,7 +10,7 @@ type UseListReq struct {
 	End    string `json:"end,omitempty" bson:"end"`
 	Bdate  string `json:"bdate,omitempty" bson:"bdate"`
 	Pageno string `json:"pageno,omitempty" bson:"pageno"`
-	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type UseListRes struct {

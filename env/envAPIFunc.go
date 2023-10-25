@@ -47,7 +47,7 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	req.Kind = "1" // 자사 제외
 	req.Rbid = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
-	req.Rowcnt = strconv.Itoa(p.RowCnt)
+	req.Rowcnt = p.RowCnt
 
 	res, err := envHttpRequest[envType.ChargerInfoListAllReq, envType.ChargerInfoListAllRes]("/charger/info/listall", req)
 	if err != nil {
@@ -113,7 +113,7 @@ func ChargerStatusListAll(p envType.PageNoRowCnt) {
 	req.Kind = "1" // 자사 제외
 	req.Rbid = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
-	req.Rowcnt = strconv.Itoa(p.RowCnt)
+	req.Rowcnt = p.RowCnt
 
 	res, err := envHttpRequest[envType.ChargerStatusListAllReq, envType.ChargerStatusListAllRes]("/charger/status/listall", req)
 	if err != nil {
@@ -147,7 +147,7 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 전체 조회
 	req.Pageno = strconv.Itoa(p.PageNo)
-	req.Rowcnt = strconv.Itoa(p.RowCnt)
+	req.Rowcnt = p.RowCnt
 
 	res, err := envHttpRequest[envType.ChargerInfoMyListAllReq, envType.ChargerInfoMyListAllRes]("/charger/info/mylist", req)
 	if err != nil {
@@ -240,7 +240,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 	req.Kind = "1" // 자사 제외
 	req.Rbid = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
-	req.Rowcnt = strconv.Itoa(p.RowCnt)
+	req.Rowcnt = p.RowCnt
 
 	res, err := envHttpRequest[envType.CardListAllReq, envType.CardListAllRes]("/card/listall", req)
 	if err != nil {
@@ -358,7 +358,7 @@ func TradeListAll(p envType.PageNoRowCnt) {
 	req.Start = "2023100100000000"
 	req.End = "2023101800000000"
 	req.Pageno = strconv.Itoa(p.PageNo)
-	req.Rowcnt = strconv.Itoa(p.RowCnt)
+	req.Rowcnt = p.RowCnt
 
 	res, err := envHttpRequest[envType.TradeListAllReq, envType.TradeListAllRes]("/trade/listall", req)
 	if err != nil {
@@ -474,7 +474,7 @@ func UseList(p envType.PageNoRowCnt) {
 	req.End = ""
 	req.Bdate = ""
 	req.Pageno = strconv.Itoa(p.PageNo)
-	req.Rowcnt = strconv.Itoa(p.RowCnt)
+	req.Rowcnt = p.RowCnt
 
 	res, err := envHttpRequest[envType.UseListReq, envType.UseListRes]("/use/list", req)
 	if err != nil {

@@ -10,7 +10,7 @@ type TradeListReq struct {
 type TradeListRes struct {
 	Result string  `json:"result" bson:"result"`
 	Rdate  string  `json:"rdate" bson:"rdate"`
-	Rowcnt string  `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt int     `json:"rowcnt" bson:"rowcnt"`
 	Trade  []Trade `json:"trade" bson:"trade"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
@@ -43,7 +43,7 @@ type TradeListAllReq struct {
 	Start  string `json:"start,omitempty" bson:"start"`
 	End    string `json:"end,omitempty" bson:"end"`
 	Pageno string `json:"pageno,omitempty" bson:"pageno"`
-	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type TradeListAllRes struct {
@@ -111,7 +111,7 @@ type TradeExlistReq struct {
 type TradeExlistRes struct {
 	Result string        `json:"result" bson:"result"`
 	Rdate  string        `json:"rdate" bson:"rdate"`
-	Rowcnt string        `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt int           `json:"rowcnt" bson:"rowcnt"`
 	Trade  []TradeExlist `json:"trade" bson:"trade"`
 
 	Errcode string `json:"errcode" bson:"errcode"`

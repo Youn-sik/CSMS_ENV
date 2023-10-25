@@ -14,7 +14,7 @@ type ChargerInfoListReq struct {
 type ChargerInfoListRes struct {
 	Result string        `json:"result" bson:"result"`
 	Rdate  string        `json:"rdate" bson:"rdate"`
-	Rowcnt string        `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt int           `json:"rowcnt" bson:"rowcnt"`
 	Cinfo  []ChargerInfo `json:"cinfo" bson:"cinfo"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
@@ -66,7 +66,7 @@ type ChargerInfoListAllReq struct {
 	Kind   string `json:"kind" bson:"kind"`
 	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
 	Pageno string `json:"pageno,omitempty" bson:"pageno"`
-	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type ChargerInfoListAllRes struct {
@@ -93,7 +93,7 @@ type ChargerStatusListReq struct {
 type ChargerStatusListRes struct {
 	Result string        `json:"result" bson:"result"`
 	Rdate  string        `json:"rdate" bson:"rdate"`
-	Rowcnt string        `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt int           `json:"rowcnt" bson:"rowcnt"`
 	Cstat  []ChargerInfo `json:"cstat" bson:"cstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
@@ -106,7 +106,7 @@ type ChargerStatusListAllReq struct {
 	Kind   string `json:"kind" bson:"kind"`
 	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
 	Pageno string `json:"pageno,omitempty" bson:"pageno"`
-	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type ChargerStatusListAllRes struct {

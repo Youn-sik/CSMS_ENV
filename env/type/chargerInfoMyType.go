@@ -6,7 +6,7 @@ type ChargerInfoMyListAllReq struct {
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
 	Pageno string `json:"pageno,omitempty" bson:"pageno"`
-	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Rowcnt int    `json:"rowcnt,omitempty" bson:"rowcnt"`
 	Sid    string `json:"sid,omitempty" bson:"sid"`
 	Cid    string `json:"cid,omitempty" bson:"cid"`
 }
