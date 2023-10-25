@@ -20,7 +20,7 @@ type ChargerInfoMyListAllRes struct {
 	Cinfo    []ChargerInfoMy `json:"cinfo" bson:"cinfo"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type ChargerInfoMy struct {
@@ -99,7 +99,7 @@ type ChargerStatusUpdateRes struct {
 	Limitcnt string                   `json:"limitcnt" bson:"limitcnt"`
 	Errcnt   string                   `json:"errcnt" bson:"errcnt"`
 	Errcode  string                   `json:"errcode" bson:"errcode"`
-	Errdlt   string                   `json:"errdlt" bson:"Errdlt"`
+	Errdtl   string                   `json:"errdtl" bson:"Errdtl"`
 	Errlist  []ChargerStatusUpdateErr `json:"errlist" bson:"errlist"`
 }
 

@@ -18,7 +18,7 @@ type ChargerInfoListRes struct {
 	Cinfo  []ChargerInfo `json:"cinfo" bson:"cinfo"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type ChargerInfo struct {
@@ -78,7 +78,7 @@ type ChargerInfoListAllRes struct {
 	Cinfo    []ChargerInfo `json:"cinfo" bson:"cinfo"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type ChargerStatusListReq struct {
@@ -97,7 +97,7 @@ type ChargerStatusListRes struct {
 	Cstat  []ChargerInfo `json:"cstat" bson:"cstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type ChargerStatusListAllReq struct {
@@ -118,5 +118,5 @@ type ChargerStatusListAllRes struct {
 	Cstat    []ChargerInfo `json:"cstat" bson:"cstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }

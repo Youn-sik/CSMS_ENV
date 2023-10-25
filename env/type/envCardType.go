@@ -25,7 +25,7 @@ type CardListRes struct {
 	Card   []Card `json:"card" bson:"card"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type CardListAllReq struct {
@@ -46,7 +46,7 @@ type CardListAllRes struct {
 	Card     []Card `json:"card" bson:"card"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type CardUpdateReq struct {
@@ -69,7 +69,7 @@ type CardUpdateRes struct {
 	Limitcnt string          `json:"limitcnt" bson:"limitcnt"`
 	Errcnt   string          `json:"errcnt" bson:"errcnt"`
 	Errcode  string          `json:"errcode" bson:"errcode"`
-	Errdlt   string          `json:"errdlt" bson:"Errdlt"`
+	Errdtl   string          `json:"errdtl" bson:"Errdtl"`
 	Errlist  []CardUpdateErr `json:"errlist" bson:"errlist"`
 }
 
@@ -89,7 +89,7 @@ type CardStatRes struct {
 	Cstat  []CardStat `json:"cstat" bson:"cstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
-	Errdlt  string `json:"errdlt" bson:"Errdlt"`
+	Errdtl  string `json:"errdtl" bson:"Errdtl"`
 }
 
 type CardStat struct {
