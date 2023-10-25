@@ -6,10 +6,12 @@ import (
 	"bytes"
 	"crypto/tls"
 	"database/sql"
+	"log"
 
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -43,20 +45,39 @@ func getHttpClient() *http.Client {
 	return &http.Client{Transport: tr}
 }
 
-func envHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpResponseInterface](url string, req TQ) (TR, error) {
+func envHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpResponseInterface](reqUrl string, req TQ) (TR, error) {
 	var res TR
 
+	// reqBody, _ := json.Marshal(req)
+	// reqBodyBuff := bytes.NewBuffer(reqBody)
+
+	// request, err := http.NewRequest("POST", "http://10.101.160.34/r2"+reqUrl, reqBodyBuff)
+	// if err != nil {
+	// 	return res, err
+	// }
+
+	// request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	// response, err := envHttpClient.Do(request)
+	// if err != nil {
+	// 	return res, err
+	// }
+
 	reqBody, _ := json.Marshal(req)
-	reqBodyBuff := bytes.NewBuffer(reqBody)
-	request, err := http.NewRequest("POST", "http://10.101.160.34/r2"+url, reqBodyBuff)
-	if err != nil {
-		return res, err
-	}
 
-	request.Header.Set("Content-Type", "application/json")
+	formData := url.Values{}
+	formData.Set("messages", string(reqBody))
 
-	response, err := envHttpClient.Do(request)
+	log.Println("http://10.101.160.34/r2" + reqUrl)
+	log.Println(formData)
+
+	response, err := http.Post(
+		"http://10.101.160.34/r2"+reqUrl,
+		"application/x-www-form-urlencoded",
+		bytes.NewBufferString(formData.Encode()),
+	)
 	if err != nil {
+		logger.PrintErrorLogLevel4(err)
 		return res, err
 	}
 
