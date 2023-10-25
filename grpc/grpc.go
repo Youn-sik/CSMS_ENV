@@ -7,6 +7,7 @@ import (
 	"context"
 	"io"
 	"log"
+	"strconv"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -15,10 +16,11 @@ import (
 func (r *GrpcServer) StatusNotification(ctx context.Context, in *pb.StatusNotificationInfo) (*pb.Result, error) {
 	log.Printf("--- gRPC Input [StatusNotification] ---\n%+v", in)
 
+	stat, _ := strconv.Atoi(in.Status)
 	cstat := envType.ChargerStatus{
 		Sid:      in.Sid,
 		Cid:      in.Cid,
-		Status:   in.Status,
+		Status:   stat,
 		Statdt:   in.Statdt,
 		LastTsdt: in.LastTsdt,
 		LastTedt: in.LastTedt,
@@ -44,10 +46,11 @@ func (r *GrpcServer) StatusNotificationStream(stream pb.AdminService_StatusNotif
 		}
 		log.Printf("--- gRPC Input Stream Data [StatusNotificationStream] ---\n%+v", in)
 
+		stat, _ := strconv.Atoi(in.Status)
 		cstat := envType.ChargerStatus{
 			Sid:      in.Sid,
 			Cid:      in.Cid,
-			Status:   in.Status,
+			Status:   stat,
 			Statdt:   in.Statdt,
 			LastTsdt: in.LastTsdt,
 			LastTedt: in.LastTedt,

@@ -45,7 +45,7 @@ type ChargerInfo struct {
 	Pay         string `json:"pay" bson:"pay"`
 	Fee         string `json:"fee" bson:"fee"`
 	Cable       string `json:"cable" bson:"cable"`
-	Status      string `json:"status" bson:"status"`
+	Status      int    `json:"status" bson:"status"`
 	Statdt      string `json:"statdt" bson:"statdt"`
 	Note        string `json:"note" bson:"note"`
 	Bmngid      string `json:"bmngid" bson:"bmngid"`

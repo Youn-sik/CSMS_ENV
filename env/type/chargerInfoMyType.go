@@ -47,7 +47,7 @@ type ChargerInfoMy struct {
 	Pay         string `json:"pay" bson:"pay"`
 	Fee         string `json:"fee" bson:"fee"`
 	Cable       string `json:"cable" bson:"cable"`
-	Status      string `json:"status" bson:"status"`
+	Status      int    `json:"status" bson:"status"`
 	Statdt      string `json:"statdt" bson:"statdt"`
 	Note        string `json:"note" bson:"note"`
 	Bmngid      string `json:"bmngid" bson:"bmngid"`
@@ -84,7 +84,7 @@ type ChargerStatusUpdateReq struct {
 type ChargerStatus struct {
 	Sid      string `json:"sid" bson:"sid"`
 	Cid      string `json:"cid" bson:"cid"`
-	Status   string `json:"status" bson:"status"`
+	Status   int    `json:"status" bson:"status"`
 	Statdt   string `json:"statdt" bson:"statdt"`
 	LastTsdt string `json:"last_tsdt" bson:"last_tsdt"`
 	LastTedt string `json:"last_tedt" bson:"last_tedt"`
