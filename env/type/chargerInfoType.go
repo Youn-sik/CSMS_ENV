@@ -74,7 +74,7 @@ type ChargerInfoListAllRes struct {
 	Rdate    string        `json:"rdate" bson:"rdate"`
 	Totalcnt int           `json:"totalcnt" bson:"totalcnt"`
 	Pageno   int           `json:"pageno" bson:"pageno"`
-	Rowcnt   string        `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt   int           `json:"rowcnt" bson:"rowcnt"`
 	Cinfo    []ChargerInfo `json:"cinfo" bson:"cinfo"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
@@ -114,7 +114,7 @@ type ChargerStatusListAllRes struct {
 	Rdate    string        `json:"rdate" bson:"rdate"`
 	Totalcnt int           `json:"totalcnt" bson:"totalcnt"`
 	Pageno   int           `json:"pageno" bson:"pageno"`
-	Rowcnt   string        `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt   int           `json:"rowcnt" bson:"rowcnt"`
 	Cstat    []ChargerInfo `json:"cstat" bson:"cstat"`
 
 	Errcode string `json:"errcode" bson:"errcode"`

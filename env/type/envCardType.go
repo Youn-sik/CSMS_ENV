@@ -42,7 +42,7 @@ type CardListAllRes struct {
 	Rdate    string `json:"rdate" bson:"rdate"`
 	Totalcnt int    `json:"totalcnt" bson:"totalcnt"`
 	Pageno   int    `json:"pageno" bson:"pageno"`
-	Rowcnt   string `json:"rowcnt" bson:"rowcnt"`
+	Rowcnt   int    `json:"rowcnt" bson:"rowcnt"`
 	Card     []Card `json:"card" bson:"card"`
 
 	Errcode string `json:"errcode" bson:"errcode"`
