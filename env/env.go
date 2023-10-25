@@ -3,15 +3,14 @@ package envc
 import (
 	envType "CSMS_ENV/env/type"
 	"CSMS_ENV/logger"
-	"bytes"
 	"crypto/tls"
 	"database/sql"
 	"log"
+	"strings"
 
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -64,17 +63,15 @@ func envHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpRespon
 	// }
 
 	reqBody, _ := json.Marshal(req)
-
-	formData := url.Values{}
-	formData.Set("messages", string(reqBody))
+	msg := "messages=" + string(reqBody)
 
 	log.Println("http://10.101.160.34/r2" + reqUrl)
-	log.Println(formData)
+	log.Println(msg)
 
 	response, err := http.Post(
 		"http://10.101.160.34/r2"+reqUrl,
 		"application/x-www-form-urlencoded",
-		bytes.NewBufferString(formData.Encode()),
+		strings.NewReader(msg),
 	)
 	if err != nil {
 		logger.PrintErrorLogLevel4(err)
