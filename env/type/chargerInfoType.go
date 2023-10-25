@@ -57,7 +57,7 @@ type ChargerInfo struct {
 	LastTedt    string `json:"last_tedt" bson:"last_tedt"`
 	NowTsdt     string `json:"now_tsdt" bson:"now_tsdt"`
 	Method      string `json:"method" bson:"method"`
-	Output      string `json:"output" bson:"output"`
+	Output      int    `json:"output" bson:"output"`
 }
 
 type ChargerInfoListAllReq struct {
