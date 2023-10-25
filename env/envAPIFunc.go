@@ -130,7 +130,7 @@ func ChargerStatusListAll(p envType.PageNoRowCnt) {
 	}
 
 	// 성공 처리
-	go updateChargePointStatus[envType.ChargerStatusListAllRes](res)
+	updateChargePointStatus[envType.ChargerStatusListAllRes](res)
 
 	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
