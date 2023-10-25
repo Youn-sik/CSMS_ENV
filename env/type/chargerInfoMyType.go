@@ -59,7 +59,7 @@ type ChargerInfoMy struct {
 	LastTedt    string `json:"last_tedt" bson:"last_tedt"`
 	NowTsdt     string `json:"now_tsdt" bson:"now_tsdt"`
 	Method      string `json:"method" bson:"method"`
-	Output      string `json:"output" bson:"output"`
+	Output      int    `json:"output" bson:"output"`
 	Expireddt   string `json:"expireddt" bson:"expireddt"`
 	Year        string `json:"year" bson:"year"`
 	Stype       string `json:"stype" bson:"stype"`
