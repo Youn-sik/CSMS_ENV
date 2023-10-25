@@ -5,7 +5,6 @@ import (
 	"CSMS_ENV/logger"
 	"crypto/tls"
 	"database/sql"
-	"log"
 	"strings"
 
 	"encoding/json"
@@ -47,26 +46,8 @@ func getHttpClient() *http.Client {
 func envHttpRequest[TQ envType.EnvHttpRequestInterface, TR envType.EnvHttpResponseInterface](reqUrl string, req TQ) (TR, error) {
 	var res TR
 
-	// reqBody, _ := json.Marshal(req)
-	// reqBodyBuff := bytes.NewBuffer(reqBody)
-
-	// request, err := http.NewRequest("POST", "http://10.101.160.34/r2"+reqUrl, reqBodyBuff)
-	// if err != nil {
-	// 	return res, err
-	// }
-
-	// request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-
-	// response, err := envHttpClient.Do(request)
-	// if err != nil {
-	// 	return res, err
-	// }
-
 	reqBody, _ := json.Marshal(req)
 	msg := "messages=" + string(reqBody)
-
-	log.Println("http://10.101.160.34/r2" + reqUrl)
-	log.Println(msg)
 
 	response, err := http.Post(
 		"http://10.101.160.34/r2"+reqUrl,
