@@ -2,13 +2,13 @@ package envType
 
 // 2. 충전소 관리
 type ChargerInfoListReq struct {
-	Bdate string `json:"bdate" bson:"bdate"`
-	Bkey  string `json:"bkey" bson:"bkey"`
 	Bid   string `json:"bid" bson:"bid"`
-	Cid   string `json:"cid" bson:"cid"`
-	Sid   string `json:"sid" bson:"sid"`
-	Rbid  string `json:"rbid" bson:"rbid"`
+	Bkey  string `json:"bkey" bson:"bkey"`
 	Kind  string `json:"kind" bson:"kind"`
+	Bdate string `json:"bdate,omitempty" bson:"bdate"`
+	Cid   string `json:"cid,omitempty" bson:"cid"`
+	Sid   string `json:"sid,omitempty" bson:"sid"`
+	Rbid  string `json:"rbid,omitempty" bson:"rbid"`
 }
 
 type ChargerInfoListRes struct {
@@ -64,9 +64,9 @@ type ChargerInfoListAllReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Rbid   string `json:"rbid" bson:"rbid"`
-	Pageno string `json:"pageno" bson:"pageno"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
+	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
+	Pageno string `json:"pageno,omitempty" bson:"pageno"`
+	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type ChargerInfoListAllRes struct {
@@ -85,9 +85,9 @@ type ChargerStatusListReq struct {
 	Bid  string `json:"bid" bson:"bid"`
 	Bkey string `json:"bkey" bson:"bkey"`
 	Kind string `json:"kind" bson:"kind"`
-	Rbid string `json:"rbid" bson:"rbid"`
-	Sid  string `json:"sid" bson:"sid"`
-	Cid  string `json:"cid" bson:"cid"`
+	Rbid string `json:"rbid,omitempty" bson:"rbid"`
+	Sid  string `json:"sid,omitempty" bson:"sid"`
+	Cid  string `json:"cid,omitempty" bson:"cid"`
 }
 
 type ChargerStatusListRes struct {
@@ -104,9 +104,9 @@ type ChargerStatusListAllReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Rbid   string `json:"rbid" bson:"rbid"`
-	Pageno string `json:"pageno" bson:"pageno"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
+	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
+	Pageno string `json:"pageno,omitempty" bson:"pageno"`
+	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type ChargerStatusListAllRes struct {

@@ -5,12 +5,12 @@ type UseListReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Tbase  string `json:"tbase" bson:"tbase"`
-	Start  string `json:"start" bson:"start"`
-	End    string `json:"end" bson:"end"`
-	Bdate  string `json:"bdate" bson:"bdate"`
-	Pageno string `json:"pageno" bson:"pageno"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
+	Tbase  string `json:"tbase,omitempty" bson:"tbase"`
+	Start  string `json:"start,omitempty" bson:"start"`
+	End    string `json:"end,omitempty" bson:"end"`
+	Bdate  string `json:"bdate,omitempty" bson:"bdate"`
+	Pageno string `json:"pageno,omitempty" bson:"pageno"`
+	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type UseListRes struct {
@@ -39,7 +39,7 @@ type Use struct {
 type UseRegisterReq struct {
 	Bid  string        `json:"bid" bson:"bid"`
 	Bkey string        `json:"bkey" bson:"bkey"`
-	Use  []UseRegister `json:"use" bson:"use"`
+	Use  []UseRegister `json:"use,omitempty" bson:"use"`
 }
 
 type UseRegister struct {
@@ -76,7 +76,7 @@ type UseRegisterErr struct {
 type UseDeleteReq struct {
 	Bid  string      `json:"bid" bson:"bid"`
 	Bkey string      `json:"bkey" bson:"bkey"`
-	Use  []UseDelete `json:"use" bson:"use"`
+	Use  []UseDelete `json:"use,omitempty" bson:"use"`
 }
 type UseDelete struct {
 	Sid  string `json:"sid" bson:"sid"`
@@ -105,9 +105,9 @@ type UseDeleteErr struct {
 type UseStatReq struct {
 	Bid   string `json:"bid" bson:"bid"`
 	Bkey  string `json:"bkey" bson:"bkey"`
-	Tbase string `json:"tbase" bson:"tbase"`
-	Start string `json:"start" bson:"start"`
-	End   string `json:"end" bson:"end"`
+	Tbase string `json:"tbase,omitempty" bson:"tbase"`
+	Start string `json:"start,omitempty" bson:"start"`
+	End   string `json:"end,omitempty" bson:"end"`
 }
 
 type UseStatRes struct {

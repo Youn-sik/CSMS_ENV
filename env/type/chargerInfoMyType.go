@@ -5,10 +5,10 @@ type ChargerInfoMyListAllReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Pageno string `json:"pageno" bson:"pageno"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
-	Sid    string `json:"sid" bson:"sid"`
-	Cid    string `json:"cid" bson:"cid"`
+	Pageno string `json:"pageno,omitempty" bson:"pageno"`
+	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
+	Sid    string `json:"sid,omitempty" bson:"sid"`
+	Cid    string `json:"cid,omitempty" bson:"cid"`
 }
 
 type ChargerInfoMyListAllRes struct {
@@ -78,7 +78,7 @@ type ChargerInfoMy struct {
 type ChargerStatusUpdateReq struct {
 	Bid   string          `json:"bid" bson:"bid"`
 	Bkey  string          `json:"bkey" bson:"bkey"`
-	Cstat []ChargerStatus `json:"cstat" bson:"cstat"`
+	Cstat []ChargerStatus `json:"cstat,omitempty" bson:"cstat"`
 }
 
 type ChargerStatus struct {

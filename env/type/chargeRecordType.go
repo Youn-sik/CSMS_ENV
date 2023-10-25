@@ -39,11 +39,11 @@ type TradeListAllReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Rbid   string `json:"rbid" bson:"rbid"`
-	Start  string `json:"start" bson:"start"`
-	End    string `json:"end" bson:"end"`
-	Pageno string `json:"pageno" bson:"pageno"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
+	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
+	Start  string `json:"start,omitempty" bson:"start"`
+	End    string `json:"end,omitempty" bson:"end"`
+	Pageno string `json:"pageno,omitempty" bson:"pageno"`
+	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type TradeListAllRes struct {
@@ -61,7 +61,7 @@ type TradeListAllRes struct {
 type TradeRegisterReq struct {
 	Bid   string          `json:"bid" bson:"bid"`
 	Bkey  string          `json:"bkey" bson:"bkey"`
-	Trade []TradeRegister `json:"trade" bson:"trade"`
+	Trade []TradeRegister `json:"trade,omitempty" bson:"trade"`
 }
 type TradeRegister struct {
 	No      string `json:"no" bson:"no"`
@@ -104,8 +104,8 @@ type TradeExlistReq struct {
 	Bid   string `json:"bid" bson:"bid"`
 	Bkey  string `json:"bkey" bson:"bkey"`
 	Kind  string `json:"kind" bson:"kind"`
-	Start string `json:"start" bson:"start"`
-	End   string `json:"end" bson:"end"`
+	Start string `json:"start,omitempty" bson:"start"`
+	End   string `json:"end,omitempty" bson:"end"`
 }
 
 type TradeExlistRes struct {
@@ -139,9 +139,9 @@ type TradeExlist struct {
 type TradeStatReq struct {
 	Bid   string `json:"bid" bson:"bid"`
 	Bkey  string `json:"bkey" bson:"bkey"`
-	Rbid  string `json:"rbid" bson:"rbid"`
-	Start string `json:"start" bson:"start"`
-	End   string `json:"end" bson:"end"`
+	Rbid  string `json:"rbid,omitempty" bson:"rbid"`
+	Start string `json:"start,omitempty" bson:"start"`
+	End   string `json:"end,omitempty" bson:"end"`
 }
 
 type TradeStatRes struct {

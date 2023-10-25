@@ -13,9 +13,9 @@ type CardListReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Bdate  string `json:"bdate" bson:"bdate"`
-	Rbid   string `json:"rbid" bson:"rbid"`
-	Cardno string `json:"cardno" bson:"sid"`
+	Bdate  string `json:"bdate,omitempty" bson:"bdate"`
+	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
+	Cardno string `json:"cardno,omitempty" bson:"sid"`
 }
 
 type CardListRes struct {
@@ -32,9 +32,9 @@ type CardListAllReq struct {
 	Bid    string `json:"bid" bson:"bid"`
 	Bkey   string `json:"bkey" bson:"bkey"`
 	Kind   string `json:"kind" bson:"kind"`
-	Rbid   string `json:"rbid" bson:"rbid"`
-	Pageno string `json:"pageno" bson:"pageno"`
-	Rowcnt string `json:"rowcnt" bson:"rowcnt"`
+	Rbid   string `json:"rbid,omitempty" bson:"rbid"`
+	Pageno string `json:"pageno,omitempty" bson:"pageno"`
+	Rowcnt string `json:"rowcnt,omitempty" bson:"rowcnt"`
 }
 
 type CardListAllRes struct {
@@ -52,7 +52,7 @@ type CardListAllRes struct {
 type CardUpdateReq struct {
 	Bid  string       `json:"bid" bson:"bid"`
 	Bkey string       `json:"bkey" bson:"bkey"`
-	Card []CardNoStop `json:"card" bson:"card"`
+	Card []CardNoStop `json:"card,omitempty" bson:"card"`
 }
 
 type CardNoStop struct {
@@ -81,7 +81,7 @@ type CardUpdateErr struct {
 type CardStatReq struct {
 	Bid  string `json:"bid" bson:"bid"`
 	Bkey string `json:"bkey" bson:"bkey"`
-	Rbid string `json:"rbid" bson:"rbid"`
+	Rbid string `json:"rbid,omitempty" bson:"rbid"`
 }
 
 type CardStatRes struct {
