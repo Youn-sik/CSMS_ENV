@@ -17,8 +17,8 @@ type UseListRes struct {
 	Result   string `json:"result" bson:"result"`
 	Rcnt     string `json:"rcnt" bson:"rcnt"`
 	Rdate    string `json:"rdate" bson:"rdate"`
-	Totalcnt string `json:"totalcnt" bson:"totalcnt"`
-	Pageno   string `json:"pageno" bson:"pageno"`
+	Totalcnt int    `json:"totalcnt" bson:"totalcnt"`
+	Pageno   int    `json:"pageno" bson:"pageno"`
 	Rowcnt   string `json:"rowcnt" bson:"rowcnt"`
 	Use      []Use  `json:"use" bson:"use"`
 

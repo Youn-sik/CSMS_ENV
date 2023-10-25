@@ -67,8 +67,7 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	go setStationArea[envType.ChargerInfoListAllRes](res)
 	go setChargePoint[envType.ChargerInfoListAllRes](res)
 
-	totalCnt, _ := strconv.Atoi(res.Totalcnt)
-	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
 		ChargerInfoListAll(p)
 	}
@@ -133,8 +132,7 @@ func ChargerStatusListAll(p envType.PageNoRowCnt) {
 	// 성공 처리
 	go updateChargePointStatus[envType.ChargerStatusListAllRes](res)
 
-	totalCnt, _ := strconv.Atoi(res.Totalcnt)
-	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
 		ChargerStatusListAll(p)
 	}
@@ -169,8 +167,7 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 	go setStationAreaMy[envType.ChargerInfoMyListAllRes](res)
 	go setChargePointMy[envType.ChargerInfoMyListAllRes](res)
 
-	totalCnt, _ := strconv.Atoi(res.Totalcnt)
-	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
 		ChargerInfoMyList(p)
 	}
@@ -262,8 +259,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 	// 성공 처리
 	go setEnvCard[envType.CardListAllRes](res)
 
-	totalCnt, _ := strconv.Atoi(res.Totalcnt)
-	if (totalCnt - p.RowCnt*p.PageNo) > 0 {
+	if (res.Totalcnt - p.RowCnt*p.PageNo) > 0 {
 		p.PageNo++
 		CardListAll(p)
 	}
