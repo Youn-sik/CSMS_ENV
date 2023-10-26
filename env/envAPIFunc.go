@@ -18,6 +18,7 @@ func ChargerInfoList() {
 	req.Kind = "1" // 자사 제외
 	req.Rbid = ""
 
+	log.Println("--- Request To Env [/charger/info/list] ---")
 	res, err := envHttpRequest[envType.ChargerInfoListReq, envType.ChargerInfoListRes]("/charger/info/list", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -26,7 +27,7 @@ func ChargerInfoList() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/charger/info/list] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -49,6 +50,7 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = p.RowCnt
 
+	log.Println("--- Request To Env [/charger/info/listall] ---")
 	res, err := envHttpRequest[envType.ChargerInfoListAllReq, envType.ChargerInfoListAllRes]("/charger/info/listall", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -57,7 +59,7 @@ func ChargerInfoListAll(p envType.PageNoRowCnt) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/charger/info/listall] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -84,6 +86,7 @@ func ChargerStatusList() {
 	req.Kind = "1" // 자사 제외
 	req.Rbid = ""
 
+	log.Println("--- Request To Env [/charger/status/list] ---")
 	res, err := envHttpRequest[envType.ChargerStatusListReq, envType.ChargerStatusListRes]("/charger/status/list", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -92,7 +95,7 @@ func ChargerStatusList() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/charger/status/list] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -115,6 +118,7 @@ func ChargerStatusListAll(p envType.PageNoRowCnt) {
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = p.RowCnt
 
+	log.Println("--- Request To Env [/charger/status/listall] ---")
 	res, err := envHttpRequest[envType.ChargerStatusListAllReq, envType.ChargerStatusListAllRes]("/charger/status/listall", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -123,7 +127,7 @@ func ChargerStatusListAll(p envType.PageNoRowCnt) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/charger/status/listall] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -149,6 +153,7 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = p.RowCnt
 
+	log.Println("--- Request To Env [/charger/info/mylist] ---")
 	res, err := envHttpRequest[envType.ChargerInfoMyListAllReq, envType.ChargerInfoMyListAllRes]("/charger/info/mylist", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -157,7 +162,7 @@ func ChargerInfoMyList(p envType.PageNoRowCnt) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/charger/info/mylist] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -183,6 +188,7 @@ func ChargerStatusUpdate(cstat []envType.ChargerStatus) {
 	req.Bkey = bkey
 	req.Cstat = cstat
 
+	log.Println("--- Request To Env [/charger/status/update] ---")
 	res, err := envHttpRequest[envType.ChargerStatusUpdateReq, envType.ChargerStatusUpdateRes]("/charger/status/update", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -191,7 +197,7 @@ func ChargerStatusUpdate(cstat []envType.ChargerStatus) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/charger/status/update] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -212,6 +218,7 @@ func CardList() {
 	req.Kind = "1" // 자사 제외
 	req.Rbid = ""
 
+	log.Println("--- Request To Env [/card/list] ---")
 	res, err := envHttpRequest[envType.CardListReq, envType.CardListRes]("/card/list", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -220,7 +227,7 @@ func CardList() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/card/list] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -242,6 +249,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = p.RowCnt
 
+	log.Println("--- Request To Env [/card/listall] ---")
 	res, err := envHttpRequest[envType.CardListAllReq, envType.CardListAllRes]("/card/listall", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -250,7 +258,7 @@ func CardListAll(p envType.PageNoRowCnt) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/card/listall] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -276,6 +284,7 @@ func CardUpdate(cardNoStop []envType.CardNoStop) {
 	req.Bkey = bkey
 	req.Card = cardNoStop
 
+	log.Println("--- Request To Env [/card/update] ---")
 	res, err := envHttpRequest[envType.CardUpdateReq, envType.CardUpdateRes]("/card/update", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -284,7 +293,7 @@ func CardUpdate(cardNoStop []envType.CardNoStop) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/card/update] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -301,6 +310,7 @@ func CardStat() {
 	req.Bkey = bkey
 	req.Rbid = ""
 
+	log.Println("--- Request To Env [/card/stat] ---")
 	res, err := envHttpRequest[envType.CardStatReq, envType.CardStatRes]("/card/stat", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -309,7 +319,7 @@ func CardStat() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/card/stat] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -328,6 +338,7 @@ func TradeList() {
 	req.Bkey = bkey
 	req.Kind = "1" // 자사 제외
 
+	log.Println("--- Request To Env [/trade/list] ---")
 	res, err := envHttpRequest[envType.TradeListReq, envType.TradeListRes]("/trade/list", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -336,7 +347,7 @@ func TradeList() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/trade/list] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -360,6 +371,7 @@ func TradeListAll(p envType.PageNoRowCnt) {
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = p.RowCnt
 
+	log.Println("--- Request To Env [/trade/listall] ---")
 	res, err := envHttpRequest[envType.TradeListAllReq, envType.TradeListAllRes]("/trade/listall", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -368,7 +380,7 @@ func TradeListAll(p envType.PageNoRowCnt) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/trade/listall] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -387,6 +399,7 @@ func TradeRegister(tradeRegisterInfo []envType.TradeRegister) {
 	req.Bkey = bkey
 	req.Trade = tradeRegisterInfo
 
+	log.Println("--- Request To Env [/trade/regi] ---")
 	res, err := envHttpRequest[envType.TradeRegisterReq, envType.TradeRegisterRes]("/trade/regi", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -395,7 +408,7 @@ func TradeRegister(tradeRegisterInfo []envType.TradeRegister) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/trade/regi] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -415,6 +428,7 @@ func TradeExList() {
 	req.Bkey = bkey
 	req.Kind = "1"
 
+	log.Println("--- Request To Env [/trade/exlist] ---")
 	res, err := envHttpRequest[envType.TradeExlistReq, envType.TradeExlistRes]("/trade/exlist", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -443,6 +457,7 @@ func TradeStat() {
 	req.Start = ""
 	req.End = ""
 
+	log.Println("--- Request To Env [/trade/stat] ---")
 	res, err := envHttpRequest[envType.TradeStatReq, envType.TradeStatRes]("/trade/stat", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -451,7 +466,7 @@ func TradeStat() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/trade/stat] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -476,6 +491,7 @@ func UseList(p envType.PageNoRowCnt) {
 	req.Pageno = strconv.Itoa(p.PageNo)
 	req.Rowcnt = p.RowCnt
 
+	log.Println("--- Request To Env [/use/list] ---")
 	res, err := envHttpRequest[envType.UseListReq, envType.UseListRes]("/use/list", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -484,7 +500,7 @@ func UseList(p envType.PageNoRowCnt) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/use/list] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -502,6 +518,7 @@ func UseRegister(useRegisterInfo []envType.UseRegister) {
 	req.Bkey = bkey
 	req.Use = useRegisterInfo
 
+	log.Println("--- Request To Env [/use/regi] ---")
 	res, err := envHttpRequest[envType.UseRegisterReq, envType.UseRegisterRes]("/use/regi", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -510,7 +527,7 @@ func UseRegister(useRegisterInfo []envType.UseRegister) {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/use/regi] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -529,6 +546,7 @@ func UseDelete() {
 	req.Bkey = bkey
 	req.Use = useDeleteInfo
 
+	log.Println("--- Request To Env [/use/deli] ---")
 	res, err := envHttpRequest[envType.UseDeleteReq, envType.UseDeleteRes]("/use/del", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -537,7 +555,7 @@ func UseDelete() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/use/del] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
@@ -556,6 +574,7 @@ func UseStat() {
 	req.Start = ""
 	req.End = ""
 
+	log.Println("--- Request To Env [/use/stat] ---")
 	res, err := envHttpRequest[envType.UseStatReq, envType.UseStatRes]("/use/stat", req)
 	if err != nil {
 		// 실패 에러 처리
@@ -564,7 +583,7 @@ func UseStat() {
 	}
 	if res.Result == "2" || res.Result == "1" {
 		// (부분) 실패 에러 처리
-		log.Println("--- Failed To Request To Env ---")
+		log.Println("--- Failed To Request To Env [/use/stat] ---")
 		log.Printf("req: %+v", req)
 		log.Printf("res: %+v", res)
 		return
