@@ -85,10 +85,10 @@ type ChargerStatus struct {
 	Sid      string `json:"sid" bson:"sid"`
 	Cid      string `json:"cid" bson:"cid"`
 	Status   int    `json:"status" bson:"status"`
-	Statdt   string `json:"statdt" bson:"statdt"`
-	LastTsdt string `json:"last_tsdt" bson:"last_tsdt"`
-	LastTedt string `json:"last_tedt" bson:"last_tedt"`
-	NowTsdt  string `json:"now_tsdt" bson:"now_tsdt"`
+	Statdt   string `json:"statdt,omitempty" bson:"statdt"`
+	LastTsdt string `json:"last_tsdt,omitempty" bson:"last_tsdt"`
+	LastTedt string `json:"last_tedt,omitempty" bson:"last_tedt"`
+	NowTsdt  string `json:"now_tsdt,omitempty" bson:"now_tsdt"`
 }
 
 type ChargerStatusUpdateRes struct {

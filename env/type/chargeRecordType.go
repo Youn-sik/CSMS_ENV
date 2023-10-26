@@ -70,12 +70,12 @@ type TradeRegister struct {
 	Tbid    string `json:"tbid" bson:"tbid"`
 	Tsdt    string `json:"tsdt" bson:"tsdt"`
 	Tedt    string `json:"tedt" bson:"tedt"`
-	Btid    string `json:"btid" bson:"btid"`
+	Btid    string `json:"btid,omitempty" bson:"btid"`
 	Pow     string `json:"pow" bson:"pow"`
 	Mon     string `json:"mon" bson:"mon"`
-	Bprice  string `json:"bprice" bson:"bprice"`
-	Tbprice string `json:"tbprice" bson:"tbprice"`
-	Bmon    string `json:"bmon" bson:"bmon"`
+	Bprice  string `json:"bprice,omitempty" bson:"bprice"`
+	Tbprice string `json:"tbprice,omitempty" bson:"tbprice"`
+	Bmon    string `json:"bmon,omitempty" bson:"bmon"`
 }
 type TradeRegisterRes struct {
 	Result   string         `json:"result" bson:"result"`
