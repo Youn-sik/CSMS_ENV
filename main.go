@@ -55,6 +55,7 @@ func main() {
 	cr.AddFunc("@every 24h", func() {
 		go envc.CardListAll(pageNoRowCnt)
 	})
+	go envc.CardListAll(pageNoRowCnt) // 최초 1회 추가
 
 	// 4.3 -> 24시간 마다
 	cr.AddFunc("@every 24h", func() {
