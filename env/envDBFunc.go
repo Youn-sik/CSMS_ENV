@@ -139,7 +139,7 @@ func updateChargePoint[TR envType.ChargerInfoInterface](cp TR) (bool, string) {
 		_, err = tx.Exec("update charge_point set sid = ?, zcode = ?, station_area_name = ?, addr = ?, addrdtl = ?, "+
 			"daddr = ?, daddrdtl = ?, kind = ?, kinddtl = ?, gps = ?, usetime = ?, "+
 			"free = ?, freedtl = ?, bname = ?, bcall = ?, type = ?, reserv = ?, member = ?, pay = ?, fee = ?, cable = ?, status = ?, statdt = ?, note = ?, "+
-			"bmngid = ?, limityn = ?, limitdetail = ?, delyn = ?, deldetail = ?, last_tsdt = ?, last_tedt = ?, now_tsdt = ?, method = ?, output = ?) "+
+			"bmngid = ?, limityn = ?, limitdetail = ?, delyn = ?, deldetail = ?, last_tsdt = ?, last_tedt = ?, now_tsdt = ?, method = ?, output = ? "+
 			"where bid = ? and cid = ?",
 			val.Sid, val.Zcode, val.Name, val.Addr, val.Addrdtl,
 			val.Daddr, val.Daddrdtl, val.Kind, val.Kinddtl, val.Gps, val.Usetime,
