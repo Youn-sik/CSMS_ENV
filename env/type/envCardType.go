@@ -67,7 +67,7 @@ type CardUpdateRes struct {
 	Updcnt   int             `json:"updcnt" bson:"updcnt"`
 	Dupcnt   int             `json:"dupcnt" bson:"dupcnt"`
 	Limitcnt int             `json:"limitcnt" bson:"limitcnt"`
-	Errcnt   string          `json:"errcnt" bson:"errcnt"`
+	Errcnt   int             `json:"errcnt" bson:"errcnt"`
 	Errcode  string          `json:"errcode" bson:"errcode"`
 	Errdtl   string          `json:"errdtl" bson:"Errdtl"`
 	Errlist  []CardUpdateErr `json:"errlist" bson:"errlist"`

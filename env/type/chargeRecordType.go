@@ -84,7 +84,7 @@ type TradeRegisterRes struct {
 	Inscnt   string         `json:"inscnt" bson:"inscnt"`
 	Dupcnt   string         `json:"dupcnt" bson:"dupcnt"`
 	Limitcnt string         `json:"limitcnt" bson:"limitcnt"`
-	Errcnt   string         `json:"errcnt" bson:"errcnt"`
+	Errcnt   int            `json:"errcnt" bson:"errcnt"`
 	Errcode  string         `json:"errcode" bson:"errcode"`
 	Errdtl   string         `json:"errdtl" bson:"errdtl"`
 	Errlist  []TradeListErr `json:"errlist" bson:"errlist"`

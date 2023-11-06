@@ -60,7 +60,7 @@ type UseRegisterRes struct {
 	Inscnt   string           `json:"inscnt" bson:"inscnt"`
 	Dupcnt   string           `json:"dupcnt" bson:"dupcnt"`
 	Limitcnt string           `json:"limitcnt" bson:"limitcnt"`
-	Errcnt   string           `json:"errcnt" bson:"errcnt"`
+	Errcnt   int              `json:"errcnt" bson:"errcnt"`
 	Errcode  string           `json:"errcode" bson:"errcode"`
 	Errdtl   string           `json:"errdtl" bson:"Errdtl"`
 	Errlist  []UseRegisterErr `json:"errlist" bson:"errlist"`
@@ -89,7 +89,7 @@ type UseDeleteRes struct {
 	Rdate   string         `json:"rdate" bson:"rdate"`
 	Reqcnt  string         `json:"reqcnt" bson:"reqcnt"`
 	Delcnt  string         `json:"delcnt" bson:"delcnt"`
-	Errcnt  string         `json:"errcnt" bson:"errcnt"`
+	Errcnt  int            `json:"errcnt" bson:"errcnt"`
 	Errcode string         `json:"errcode" bson:"errcode"`
 	Errdtl  string         `json:"errdtl" bson:"Errdtl"`
 	Errlist []UseDeleteErr `json:"errlist" bson:"errlist"`
