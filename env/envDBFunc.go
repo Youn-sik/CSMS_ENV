@@ -233,24 +233,32 @@ func setChargePointMy[TR envType.ChargerInfoMyInterface](cp TR) (bool, string) {
 }
 
 func setEnvCard[TR envType.CardInfoInterface](ci TR) (bool, string) {
-	tx, err := tidbClientEnv.Begin()
-	if err != nil {
-		logger.PrintErrorLogLevel4(err)
-		return false, "Tx Initializing Failed"
-	}
-	defer tx.Rollback()
 
 	card := ci.GetEnvCardInfo()
 	for _, val := range card {
+		tx, err := tidbClientEnv.Begin()
+		if err != nil {
+			logger.PrintErrorLogLevel4(err)
+			return false, "Tx Initializing Failed"
+		}
+		defer tx.Rollback()
+
+		_, err = tx.Exec("delete from env_card where no = ?", val.No)
+		if err != nil {
+			logger.PrintErrorLogLevel4(err)
+			return false, "Failed To Delete Data"
+		}
+
 		_, err = tx.Exec("insert into env_card(bid, no, stop, regdate, upddate) values(?,?,?,?,?)",
 			val.Bid, val.No, val.Stop, val.Regdate, val.Upddate)
 		if err != nil {
 			logger.PrintErrorLogLevel4(err)
 			return false, "Failed To Insert Data"
 		}
+
+		tx.Commit()
 	}
 
-	tx.Commit()
 	return true, ""
 }
 
