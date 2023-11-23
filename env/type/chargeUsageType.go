@@ -50,7 +50,7 @@ type UseRegister struct {
 	Tedt    string `json:"tedt" bson:"tedt"`
 	Pow     string `json:"pow" bson:"pow"`
 	Mon     string `json:"mon" bson:"mon"`
-	Rcvdate string `json:"rcvdate" bson:"rcvdate"`
+	Rcvdate string `json:"rcvdate,omitempty" bson:"rcvdate"`
 }
 
 type UseRegisterRes struct {
