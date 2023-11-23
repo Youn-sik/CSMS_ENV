@@ -58,8 +58,8 @@ type UseRegisterRes struct {
 	Rdate    string           `json:"rdate" bson:"rdate"`
 	Reqcnt   string           `json:"reqcnt" bson:"reqcnt"`
 	Inscnt   string           `json:"inscnt" bson:"inscnt"`
-	Dupcnt   string           `json:"dupcnt" bson:"dupcnt"`
-	Limitcnt string           `json:"limitcnt" bson:"limitcnt"`
+	Dupcnt   int              `json:"dupcnt" bson:"dupcnt"`
+	Limitcnt int              `json:"limitcnt" bson:"limitcnt"`
 	Errcnt   int              `json:"errcnt" bson:"errcnt"`
 	Errcode  string           `json:"errcode" bson:"errcode"`
 	Errdtl   string           `json:"errdtl" bson:"Errdtl"`
