@@ -56,7 +56,7 @@ type UseRegister struct {
 type UseRegisterRes struct {
 	Result   string           `json:"result" bson:"result"`
 	Rdate    string           `json:"rdate" bson:"rdate"`
-	Reqcnt   string           `json:"reqcnt" bson:"reqcnt"`
+	Reqcnt   int              `json:"reqcnt" bson:"reqcnt"`
 	Inscnt   string           `json:"inscnt" bson:"inscnt"`
 	Dupcnt   int              `json:"dupcnt" bson:"dupcnt"`
 	Limitcnt int              `json:"limitcnt" bson:"limitcnt"`
@@ -87,7 +87,7 @@ type UseDelete struct {
 type UseDeleteRes struct {
 	Result  string         `json:"result" bson:"result"`
 	Rdate   string         `json:"rdate" bson:"rdate"`
-	Reqcnt  string         `json:"reqcnt" bson:"reqcnt"`
+	Reqcnt  int            `json:"reqcnt" bson:"reqcnt"`
 	Delcnt  string         `json:"delcnt" bson:"delcnt"`
 	Errcnt  int            `json:"errcnt" bson:"errcnt"`
 	Errcode string         `json:"errcode" bson:"errcode"`

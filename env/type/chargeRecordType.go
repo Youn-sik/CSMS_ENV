@@ -80,7 +80,7 @@ type TradeRegister struct {
 type TradeRegisterRes struct {
 	Result   string         `json:"result" bson:"result"`
 	Rdate    string         `json:"rdate" bson:"rdate"`
-	Reqcnt   string         `json:"reqcnt" bson:"reqcnt"`
+	Reqcnt   int            `json:"reqcnt" bson:"reqcnt"`
 	Inscnt   string         `json:"inscnt" bson:"inscnt"`
 	Dupcnt   int            `json:"dupcnt" bson:"dupcnt"`
 	Limitcnt int            `json:"limitcnt" bson:"limitcnt"`
